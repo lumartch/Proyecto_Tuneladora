@@ -12,3 +12,10 @@ MainTuneladoraWindow::~MainTuneladoraWindow()
 {
     delete ui;
 }
+
+void MainTuneladoraWindow::on_botonRegresaPB_clicked()
+{
+    /*MainMenuWindow *ventana = new MainMenuWindow;
+    ventana->show();*/
+    delete ui;
+}

@@ -15,6 +15,9 @@ public:
     explicit MainTuneladoraWindow(QWidget *parent = 0);
     ~MainTuneladoraWindow();
 
+private slots:
+    void on_botonRegresaPB_clicked();
+
 private:
     Ui::MainTuneladoraWindow *ui;
 };
