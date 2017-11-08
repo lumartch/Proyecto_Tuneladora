@@ -30,6 +30,7 @@ private slots:
 private:
     Ui::MainTuneladoraWindow *ui;
     void enableButtonBitacora();
+    void cleanBitacora();
 };
 
 #endif // MAINTUNELADORAWINDOW_H
