@@ -7,8 +7,7 @@ namespace Ui {
 class MainTuneladoraWindow;
 }
 
-class MainTuneladoraWindow : public QMainWindow
-{
+class MainTuneladoraWindow : public QMainWindow{
     Q_OBJECT
 
 public:
@@ -18,8 +17,19 @@ public:
 private slots:
     void on_botonRegresaPB_clicked();
 
+    void on_PVSSLE_textChanged(const QString &arg1);
+
+    void on_PVSCLE_textChanged(const QString &arg1);
+
+    void on_PVMLE_textChanged(const QString &arg1);
+
+    void on_bitacoraCB_currentIndexChanged(int index);
+
+    void on_bitacoraBB_accepted();
+
 private:
     Ui::MainTuneladoraWindow *ui;
+    void enableButtonBitacora();
 };
 
 #endif // MAINTUNELADORAWINDOW_H
