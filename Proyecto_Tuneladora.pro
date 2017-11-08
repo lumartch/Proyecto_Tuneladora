@@ -25,10 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        maintuneladorawindow.cpp
+        maintuneladorawindow.cpp \
+    maincalculoswindow.cpp \
+    mainmenuwindow.cpp
 
 HEADERS += \
-        maintuneladorawindow.h
+        maintuneladorawindow.h \
+    maincalculoswindow.h \
+    mainmenuwindow.h
 
 FORMS += \
-        maintuneladorawindow.ui
+        maintuneladorawindow.ui \
+    maincalculoswindow.ui \
+    mainmenuwindow.ui
