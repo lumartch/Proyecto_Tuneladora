@@ -194,3 +194,11 @@ void MainTuneladoraWindow::on_bitacoraBB_accepted(){
         ;
     }
 }
+
+void MainTuneladoraWindow::on_bitacoraBB_rejected(){
+    ui->PVMLE->setText("");
+    ui->PVSCLE->setText("");
+    ui->PVSSLE->setText("");
+    ui->bitacoraCB->setCurrentIndex(0);
+    ui->resolucionTE->setText("");
+}

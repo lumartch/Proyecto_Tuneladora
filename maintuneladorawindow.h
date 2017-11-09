@@ -27,6 +27,8 @@ private slots:
 
     void on_bitacoraBB_accepted();
 
+    void on_bitacoraBB_rejected();
+
 private:
     Ui::MainTuneladoraWindow *ui;
     void enableButtonBitacora();
