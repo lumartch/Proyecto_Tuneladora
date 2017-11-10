@@ -3,12 +3,14 @@
 
 MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainCalculosWindow)
-{
+    ui(new Ui::MainCalculosWindow){
     ui->setupUi(this);
 }
 
-MainCalculosWindow::~MainCalculosWindow()
-{
+MainCalculosWindow::~MainCalculosWindow(){
     delete ui;
+}
+
+void MainCalculosWindow::on_pushButton_clicked(){
+    close();
 }
