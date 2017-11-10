@@ -44,12 +44,15 @@
      <rect>
       <x>300</x>
       <y>70</y>
-      <width>56</width>
-      <height>17</height>
+      <width>171</width>
+      <height>231</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../../Desktop/calculos.jpg</pixmap>
     </property>
    </widget>
    <widget class="QTextEdit" name="descripcionTE">
@@ -82,6 +85,22 @@ p, li { white-space: pre-wrap; }
      <string>Aceptar</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>80</y>
+      <width>171</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../../Desktop/suelo.jpg</pixmap>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -89,7 +108,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>494</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

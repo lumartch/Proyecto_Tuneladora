@@ -18,7 +18,7 @@ MainTuneladoraWindow::~MainTuneladoraWindow(){
 }
 
 void MainTuneladoraWindow::on_botonRegresaPB_clicked(){
-    delete ui;
+    close();
 }
 void MainTuneladoraWindow::cleanBitacora(){
     ui->resolucionTE->setText("Parametros aceptados.");

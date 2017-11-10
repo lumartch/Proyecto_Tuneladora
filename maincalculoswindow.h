@@ -14,6 +14,9 @@ public:
     explicit MainCalculosWindow(QWidget *parent = 0);
     ~MainCalculosWindow();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::MainCalculosWindow *ui;
 };
