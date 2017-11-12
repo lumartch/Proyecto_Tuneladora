@@ -27,14 +27,17 @@ SOURCES += \
         main.cpp \
         maintuneladorawindow.cpp \
     maincalculoswindow.cpp \
-    mainmenuwindow.cpp
+    mainmenuwindow.cpp \
+    mainondaswindow.cpp
 
 HEADERS += \
         maintuneladorawindow.h \
     maincalculoswindow.h \
-    mainmenuwindow.h
+    mainmenuwindow.h \
+    mainondaswindow.h
 
 FORMS += \
         maintuneladorawindow.ui \
     maincalculoswindow.ui \
-    mainmenuwindow.ui
+    mainmenuwindow.ui \
+    mainondaswindow.ui

@@ -6,11 +6,6 @@ MainTuneladoraWindow::MainTuneladoraWindow(QWidget *parent) :
     ui(new Ui::MainTuneladoraWindow){
     ui->setupUi(this);
     enableButtonBitacora();
-    QRegExp rx("[0-9]*");
-    QValidator*validador = new QRegExpValidator(rx);
-    ui->PVMLE->setValidator(validador);
-    ui->PVSCLE->setValidator(validador);
-    ui->PVSSLE->setValidator(validador);
 }
 
 MainTuneladoraWindow::~MainTuneladoraWindow(){
@@ -20,185 +15,241 @@ MainTuneladoraWindow::~MainTuneladoraWindow(){
 void MainTuneladoraWindow::on_botonRegresaPB_clicked(){
     close();
 }
+
 void MainTuneladoraWindow::cleanBitacora(){
-    ui->resolucionTE->setText("Parametros aceptados.");
-    ui->PVMLE->setEnabled(true);
-    ui->PVMLE->setText("");
-    ui->PVSCLE->setEnabled(true);
-    ui->PVSCLE->setText("");
-    ui->PVSSLE->setText("");
     ui->bitacoraCB->setCurrentIndex(0);
+    ui->PVSSDSP->setMinimum(0);
+    ui->PVSCDSP->setMinimum(0);
+    ui->PVMDSP->setMinimum(0);
+    camposEnable();
 }
-void MainTuneladoraWindow::enableButtonBitacora(){
-    if(ui->PVSSLE->text().size() > 0 && ui->PVSCLE->text().size() > 0 && ui->PVMLE->text().size() > 0 && ui->bitacoraCB->currentIndex() != 0){
-        ui->bitacoraBB->button(QDialogButtonBox::Ok)->setEnabled(true);
-    }else{
-        ui->bitacoraBB->button(QDialogButtonBox::Ok)->setEnabled(false);
+
+void MainTuneladoraWindow::camposEnable()
+{
+    ui->PVSSDSP->setEnabled(true);
+    ui->PVSCDSP->setEnabled(true);
+    ui->PVMDSP->setEnabled(true);
+}
+
+void MainTuneladoraWindow::guardarBitacora(const QString &suelo)
+{
+    //Da el nombre al archivo
+    QDate fechaLocal = QDate::currentDate();
+    QString archivo = suelo + "_" + QString::number(fechaLocal.day()) + "_" +
+                        QString::number(fechaLocal.month()) + "_" + QString::number(fechaLocal.year()) + ".txt";
+
+    //Busca los archivos existentes
+    bool bandera = false;
+    QString myTexto;
+    QString auxiliar;
+    QFile bitacoraLectura("Bitacora.txt");
+    if(!bitacoraLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "No hay archivo para lectura Bitacora.txt...";
+        bitacoraLectura.close();
     }
-}
-void MainTuneladoraWindow::on_PVSSLE_textChanged(const QString &arg1){
-    Q_UNUSED (arg1);
-    enableButtonBitacora();
-}
+    QTextStream lecturaArchivo(&bitacoraLectura);
+    while(!lecturaArchivo.atEnd()) {
+        auxiliar = lecturaArchivo.readLine();
+        myTexto += auxiliar + "\n";
+        if(auxiliar == archivo){
+            //qDebug() << auxiliar << " - " << archivo;
+            bandera = true;
+        }
+    }
+    bitacoraLectura.close();
+    if(bandera == false){
+        //Bitacora general guardado
+        QFile bitacoraGeneral("Bitacora.txt");
+        if (!bitacoraGeneral.open(QIODevice::WriteOnly | QIODevice::Text)){
+            bitacoraGeneral.close();
+            return;
+        }
+        QTextStream out(&bitacoraGeneral);
+        out << archivo + "\n";
+        out << myTexto;
+        bitacoraGeneral.close();
+    }
 
-void MainTuneladoraWindow::on_PVSCLE_textChanged(const QString &arg1){
-    Q_UNUSED (arg1);
-    enableButtonBitacora();
-}
 
-void MainTuneladoraWindow::on_PVMLE_textChanged(const QString &arg1){
-    Q_UNUSED(arg1);
-    enableButtonBitacora();
+    //Tipos de suelos
+    //Lectura de las bitacoras por dia de los suelos
+    QFile bitacoraSueloLectura(archivo);
+    QString auxStr;
+    if(!bitacoraSueloLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "No hay archivo para lectura " << archivo << "...";
+        bitacoraSueloLectura.close();
+    }
+    else{
+        QTextStream lecturaSuelo(&bitacoraSueloLectura);
+        while(!lecturaSuelo.atEnd()) {
+            auxStr += lecturaSuelo.readLine() + "\n";
+        }
+        bitacoraSueloLectura.close();
+    }
+
+    //Bitacora por tipo de suelo guardado
+    QTime horaLocal = QTime::currentTime();
+    QFile bitacoraSuelo(archivo);
+    if(!bitacoraSuelo.open(QIODevice::WriteOnly | QIODevice::Text)){
+        bitacoraSuelo.close();
+        return;
+    }
+    else{
+        QTextStream salida(&bitacoraSuelo);
+        QString horaStr = '[' + QString::number(horaLocal.hour()) + ':' + QString::number(horaLocal.minute()) + ']';
+        salida << auxStr;
+        salida << horaStr + "\n";
+        salida << ui->PVSSDSP->text() << "\n";
+        salida << ui->PVSCDSP->text() << "\n";
+        salida << ui->PVMDSP->text() << "\n";
+        bitacoraSuelo.close();
+    }
 }
 
 void MainTuneladoraWindow::on_bitacoraCB_currentIndexChanged(int index){
-    switch(index){
+    //Implementa maximos, minimos y constantes dentro de los campos para manejar los datos
+    enableButtonBitacora();
+    camposEnable();
+    switch (index) {
+    case 0:
+        cleanBitacora();
+        break;
+    //Arena de rio
     case 1:
-        ui->PVSCLE->setText("1600");
-        ui->PVSCLE->setEnabled(false);
-        ui->PVMLE->setText("1500");
-        ui->PVMLE->setEnabled(false);
-        ui->resolucionTE->setEnabled(false);
+        ui->PVSSDSP->setMaximum(1500);
+        ui->PVSSDSP->setMinimum(1400);
+
+        ui->PVSCDSP->setMinimum(1600);
+        ui->PVSCDSP->setDisabled(true);
+
+        ui->PVMDSP->setMinimum(1500);
+        ui->PVMDSP->setDisabled(true);
         break;
+    //Arena amarilla
     case 2:
-        ui->PVSCLE->setText("1120 - 1200");
-        ui->PVSCLE->setEnabled(false);
-        ui->PVMLE->setText("1350");
-        ui->PVMLE->setEnabled(false);
-        ui->resolucionTE->setEnabled(false);
+        ui->PVSSDSP->setMaximum(1000);
+        ui->PVSSDSP->setMinimum(1100);
+
+        ui->PVSCDSP->setMaximum(1200);
+        ui->PVSCDSP->setMinimum(1120);
+
+        ui->PVMDSP->setMinimum(1350);
+        ui->PVMDSP->setDisabled(true);
         break;
+    //Arena rosa
     case 3:
-        ui->PVSCLE->setText("1110");
-        ui->PVSCLE->setEnabled(false);
-        ui->PVMLE->setText("1350- 1400");
-        ui->PVMLE->setEnabled(false);
-        ui->resolucionTE->setEnabled(false);
+        ui->PVSSDSP->setMinimum(990);
+        ui->PVSSDSP->setDisabled(true);
+
+        ui->PVSCDSP->setMinimum(1100);
+        ui->PVSCDSP->setDisabled(true);
+
+        ui->PVMDSP->setMaximum(1350);
+        ui->PVMDSP->setMinimum(1400);
         break;
+    //Arena blanca
     case 4:
-        ui->PVSCLE->setText("1150 - 1200");
-        ui->PVSCLE->setEnabled(false);
-        ui->PVMLE->setText("1400");
-        ui->PVMLE->setEnabled(false);
-        ui->resolucionTE->setEnabled(false);
+        ui->PVSSDSP->setMaximum(1050);
+        ui->PVSSDSP->setMinimum(1100);
+
+        ui->PVSCDSP->setMaximum(1200);
+        ui->PVSCDSP->setMinimum(1150);
+
+        ui->PVMDSP->setMinimum(1400);
+        ui->PVMDSP->setDisabled(true);
         break;
+    //Jal grueso
     case 5:
-        ui->PVSCLE->setText("750 - 900");
-        ui->PVSCLE->setEnabled(false);
-        ui->PVMLE->setText("1000 - 1180");
-        ui->PVMLE->setEnabled(false);
-        ui->resolucionTE->setEnabled(false);
+        ui->PVSSDSP->setMaximum(700);
+        ui->PVSSDSP->setMinimum(600);
+
+        ui->PVSCDSP->setMaximum(900);
+        ui->PVSCDSP->setMinimum(780);
+
+        ui->PVMDSP->setMaximum(1180);
+        ui->PVMDSP->setMinimum(1000);
         break;
+    //Jal mediano
     case 6:
-        ui->PVSCLE->setText("800 - 1000");
-        ui->PVSCLE->setEnabled(false);
-        ui->PVMLE->setText("1150 - 1280");
-        ui->PVMLE->setEnabled(false);
-        ui->resolucionTE->setEnabled(false);
+        ui->PVSSDSP->setMaximum(750);
+        ui->PVSSDSP->setMinimum(650);
+
+        ui->PVSCDSP->setMaximum(1000);
+        ui->PVSCDSP->setMinimum(300);
+
+        ui->PVMDSP->setMaximum(1280);
+        ui->PVMDSP->setMinimum(1150);
         break;
+    //Jal fino
     case 7:
-        ui->PVSCLE->setText("750 - 1000");
-        ui->PVSCLE->setEnabled(false);
-        ui->PVMLE->setText("1100 - 1250");
-        ui->PVMLE->setEnabled(false);
-        ui->resolucionTE->setEnabled(false);
+        ui->PVSSDSP->setMaximum(650);
+        ui->PVSSDSP->setMinimum(600);
+
+        ui->PVSCDSP->setMaximum(1000);
+        ui->PVSCDSP->setMinimum(750);
+
+        ui->PVMDSP->setMaximum(1250);
+        ui->PVMDSP->setMinimum(1100);
         break;
+    //Arcilla amarilla
     case 8:
-        ui->PVSCLE->setText("1050 - 1100");
-        ui->PVSCLE->setEnabled(false);
-        ui->PVMLE->setText("1500 - 1600");
-        ui->PVMLE->setEnabled(false);
-        ui->resolucionTE->setEnabled(false);
+        ui->PVSSDSP->setMaximum(1000);
+        ui->PVSSDSP->setMinimum(920);
+
+        ui->PVSCDSP->setMaximum(1100);
+        ui->PVSCDSP->setMinimum(1050);
+
+        ui->PVMDSP->setMaximum(1600);
+        ui->PVMDSP->setMinimum(1500);
         break;
     default:
-        ;
+        break;
     }
-    enableButtonBitacora();
 }
 
 void MainTuneladoraWindow::on_bitacoraBB_accepted(){
+    //Lanza el nombre para el archivo que guarde los datos de tuneladora
     int auxOpc = ui->bitacoraCB->currentIndex();
     switch(auxOpc){
     case 1:
-        if(ui->PVSSLE->text().toDouble() < 1400){
-            ui->resolucionTE->setText("El peso para la arena de rio es muy bajo, intente de nuevo.");
-        }else if(ui->PVSSLE->text().toDouble() > 1500){
-            ui->resolucionTE->setText("El peso de la arena del rio es muy pesada, intente de nuevo.");
-        }else{
-            cleanBitacora();
-        }
+        guardarBitacora("Arena-Rio");
         break;
     case 2:
-        if(ui->PVSSLE->text().toDouble() < 1000){
-            ui->resolucionTE->setText("El peso para la arena amarilla es muy bajo, intente de nuevo.");
-        }else if(ui->PVSSLE->text().toDouble() > 1350){
-            ui->resolucionTE->setText("El peso de la arena amarilla es muy pesada, intente de nuevo.");
-        }else{
-            cleanBitacora();
-        }
+        guardarBitacora("Arena-Amarilla");
         break;
     case 3:
-        if(ui->PVSSLE->text().toDouble() < 990){
-            ui->resolucionTE->setText("El peso para la arena tepetate color rosa es muy bajo, intente de nuevo.");
-        }else if(ui->PVSSLE->text().toDouble() > 1400){
-            ui->resolucionTE->setText("El peso de la arena tepetate color rosa es muy pesada, intente de nuevo.");
-        }else{
-            cleanBitacora();
-        }
+        guardarBitacora("Tepetate-Rosa");
         break;
     case 4:
-        if(ui->PVSSLE->text().toDouble() < 1050){
-            ui->resolucionTE->setText("El peso para la arena tepetate color blanco es muy bajo, intente de nuevo.");
-        }else if(ui->PVSSLE->text().toDouble() > 1400){
-            ui->resolucionTE->setText("El peso de la arena tepetate color blanco es muy pesada, intente de nuevo.");
-        }else{
-            cleanBitacora();
-        }
+        guardarBitacora("Tepetate-Blanco");
         break;
     case 5:
-        if(ui->PVSSLE->text().toDouble() < 600){
-            ui->resolucionTE->setText("El peso para la arena jal grueso es muy bajo, intente de nuevo.");
-        }else if(ui->PVSSLE->text().toDouble() > 1180){
-            ui->resolucionTE->setText("El peso de la arena jal grueso es muy pesada, intente de nuevo.");
-        }else{
-            cleanBitacora();
-        }
+        guardarBitacora("Jal-Grueso");
         break;
     case 6:
-        if(ui->PVSSLE->text().toDouble() < 650){
-            ui->resolucionTE->setText("El peso para la arena jal mediano es muy bajo, intente de nuevo.");
-        }else if(ui->PVSSLE->text().toDouble() > 1280){
-            ui->resolucionTE->setText("El peso de la arena jal mediano es muy pesada, intente de nuevo.");
-        }else{
-            cleanBitacora();
-        }
+        guardarBitacora("Jal-Mediano");
         break;
     case 7:
-        if(ui->PVSSLE->text().toDouble() < 600){
-            ui->resolucionTE->setText("El peso para la arena jal fino es muy bajo, intente de nuevo.");
-        }else if(ui->PVSSLE->text().toDouble() > 1250){
-            ui->resolucionTE->setText("El peso de la arena jal fino es muy pesada, intente de nuevo.");
-        }else{
-            cleanBitacora();
-        }
+        guardarBitacora("Jal-Fino");
         break;
     case 8:
-        if(ui->PVSSLE->text().toDouble() < 920){
-            ui->resolucionTE->setText("El peso para la arcilla negra es muy bajo, intente de nuevo.");
-        }else if(ui->PVSSLE->text().toDouble() > 1600){
-            ui->resolucionTE->setText("El peso de la arcilla negra es muy pesada, intente de nuevo.");
-        }else{
-            cleanBitacora();
-        }
+        guardarBitacora("Arcilla-Negra");
         break;
-    default:
-        ;
     }
+    cleanBitacora();
 }
 
 void MainTuneladoraWindow::on_bitacoraBB_rejected(){
-    ui->PVMLE->setText("");
-    ui->PVSCLE->setText("");
-    ui->PVSSLE->setText("");
-    ui->bitacoraCB->setCurrentIndex(0);
-    ui->resolucionTE->setText("");
+    cleanBitacora();
+}
+
+void MainTuneladoraWindow::enableButtonBitacora()
+{
+    if(ui->bitacoraCB->currentIndex() > 0){
+        ui->bitacoraBB->button(QDialogButtonBox::Ok)->setEnabled(true);
+    }
+    else
+    {
+        ui->bitacoraBB->button(QDialogButtonBox::Ok)->setEnabled(false);
+    }
 }

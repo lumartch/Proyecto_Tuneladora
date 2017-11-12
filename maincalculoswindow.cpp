@@ -5,7 +5,6 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainCalculosWindow){
     ui->setupUi(this);
-    ui->tipoPiedraTE->hide();
 }
 
 MainCalculosWindow::~MainCalculosWindow(){
@@ -16,7 +15,8 @@ void MainCalculosWindow::on_pushButton_clicked(){
     close();
 }
 
-void MainCalculosWindow::on_piedraBB_accepted(){
+void MainCalculosWindow::on_piedraBB_accepted()
+{
     ui->tipoPiedraTE->show();
     if(ui->ondasPLE->text() > 4500 && ui->ondasPLE->text() < 7500 && ui->ondasSLE->text() > 3500 && ui->ondasSLE->text() < 4000 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se está trabajando son Rocas Inglesas");
