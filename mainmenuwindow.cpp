@@ -1,10 +1,11 @@
 #include "mainmenuwindow.h"
 #include "ui_mainmenuwindow.h"
+#include "maincalculoswindow.h"
+#include "maintuneladorawindow.h"
 
 MainMenuWindow::MainMenuWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainMenuWindow)
-{
+    ui(new Ui::MainMenuWindow){
     ui->setupUi(this);
     ui->descripcionTE->setEnabled(false);
     ui->descripcionTE->setText("Bienvenido al asistente de datos de la tuneladora.");
@@ -38,18 +39,24 @@ void MainMenuWindow::on_eleccionCB_currentIndexChanged(int index){
 void MainMenuWindow::on_aceptarPb_clicked(){
     if(ui->eleccionCB->currentIndex() == 1){
         //this->hide();
-        ventanaBitacora = new MainTuneladoraWindow;
-        ventanaBitacora->show();
-        ui->label->hide();
-        ui->imagenLabel->hide();
-        ui->eleccionCB->setCurrentIndex(0);
+        if(contRegistro == 0){
+            contRegistro++;
+            ventanaBitacora = new MainTuneladoraWindow;
+            ventanaBitacora->show();
+            ui->label->hide();
+            ui->imagenLabel->hide();
+            ui->eleccionCB->setCurrentIndex(0);
+        }
     }else if(ui->eleccionCB->currentIndex() == 2){
         //this->hide();
-        ventanaCalculos = new MainCalculosWindow;
-        ventanaCalculos->show();
-        ui->label->hide();
-        ui->imagenLabel->hide();
-        ui->eleccionCB->setCurrentIndex(0);
+        if(contCalculos == 0){
+            contCalculos++;
+            ventanaCalculos = new MainCalculosWindow;
+            ventanaCalculos->show();
+            ui->label->hide();
+            ui->imagenLabel->hide();
+            ui->eleccionCB->setCurrentIndex(0);
+        }
     }else{
         QMessageBox::information(
                         this,

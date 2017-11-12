@@ -2,6 +2,7 @@
 #define MAINTUNELADORAWINDOW_H
 
 #include <QMainWindow>
+#include "mainmenuwindow.h"
 
 namespace Ui {
 class MainTuneladoraWindow;
