@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>706</width>
+    <width>526</width>
     <height>478</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="QTabWidget" name="bitacoraTabs">
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -29,7 +29,7 @@
          <rect>
           <x>20</x>
           <y>30</y>
-          <width>541</width>
+          <width>451</width>
           <height>25</height>
          </rect>
         </property>
@@ -108,7 +108,7 @@
        <widget class="QDialogButtonBox" name="bitacoraBB">
         <property name="geometry">
          <rect>
-          <x>470</x>
+          <x>310</x>
           <y>190</y>
           <width>178</width>
           <height>36</height>
@@ -136,7 +136,7 @@
          <rect>
           <x>260</x>
           <y>70</y>
-          <width>251</width>
+          <width>221</width>
           <height>22</height>
          </rect>
         </property>
@@ -146,7 +146,7 @@
          <rect>
           <x>260</x>
           <y>110</y>
-          <width>251</width>
+          <width>221</width>
           <height>22</height>
          </rect>
         </property>
@@ -156,7 +156,7 @@
          <rect>
           <x>260</x>
           <y>150</y>
-          <width>251</width>
+          <width>221</width>
           <height>22</height>
          </rect>
         </property>
@@ -184,7 +184,7 @@
          <rect>
           <x>9</x>
           <y>9</y>
-          <width>221</width>
+          <width>341</width>
           <height>20</height>
          </rect>
         </property>
@@ -195,42 +195,42 @@
         </item>
         <item>
          <property name="text">
-          <string>Pa (Pizarras alteradas)</string>
+          <string>Arena de rio</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Pn (Pizarras negras cuarciticas)</string>
+          <string>Arena amarilla</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Em (Esquistos y fillitas moteadas)</string>
+          <string>Arena de tepetate color rosa</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Cs (Rocas metamórficas calcosilicatadas)</string>
+          <string>Arena de tepetate color blanco</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Cz (Cuarcitas laminadas)</string>
+          <string>Jal grueso</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Cn (Cornubianitas)</string>
+          <string>Jal mediano</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Gr (Granodioritas)</string>
+          <string>Jal fino</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>DP (Dique de pórfido)</string>
+          <string>Arcilla negra</string>
          </property>
         </item>
        </widget>
@@ -238,9 +238,9 @@
         <property name="geometry">
          <rect>
           <x>9</x>
-          <y>55</y>
-          <width>661</width>
-          <height>261</height>
+          <y>75</y>
+          <width>471</width>
+          <height>241</height>
          </rect>
         </property>
         <column>
@@ -261,11 +261,6 @@
         <column>
          <property name="text">
           <string>PVM</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Fecha</string>
          </property>
         </column>
        </widget>
@@ -311,8 +306,8 @@
        <widget class="QPushButton" name="registroPB">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>333</y>
+          <x>410</x>
+          <y>330</y>
           <width>75</width>
           <height>27</height>
          </rect>
@@ -332,6 +327,16 @@
          </size>
         </property>
        </widget>
+       <widget class="QComboBox" name="fechaCB">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>301</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
@@ -342,7 +347,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>706</width>
+     <width>526</width>
      <height>21</height>
     </rect>
    </property>

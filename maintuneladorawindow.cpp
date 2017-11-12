@@ -21,6 +21,9 @@ void MainTuneladoraWindow::cleanBitacora(){
     ui->PVSSDSP->setMinimum(0);
     ui->PVSCDSP->setMinimum(0);
     ui->PVMDSP->setMinimum(0);
+    ui->PVSSDSP->setMaximum(0);
+    ui->PVSCDSP->setMaximum(0);
+    ui->PVMDSP->setMaximum(0);
     camposEnable();
 }
 
@@ -52,7 +55,6 @@ void MainTuneladoraWindow::guardarBitacora(const QString &suelo)
         auxiliar = lecturaArchivo.readLine();
         myTexto += auxiliar + "\n";
         if(auxiliar == archivo){
-            //qDebug() << auxiliar << " - " << archivo;
             bandera = true;
         }
     }
@@ -103,6 +105,60 @@ void MainTuneladoraWindow::guardarBitacora(const QString &suelo)
         salida << ui->PVSCDSP->text() << "\n";
         salida << ui->PVMDSP->text() << "\n";
         bitacoraSuelo.close();
+    }
+}
+
+void MainTuneladoraWindow::cargarBitacora(const QString &nomSuelo)
+{
+    QString auxiliar;
+    QRegularExpression rx(nomSuelo);
+    QFile bitacoraLectura("Bitacora.txt");
+    if(!bitacoraLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        ui->registroTW->setRowCount(0);
+        qDebug() << "No hay archivo para lectura Bitacora.txt...";
+        bitacoraLectura.close();
+        return;
+    }
+    QTextStream lecturaArchivo(&bitacoraLectura);
+    while(!lecturaArchivo.atEnd()) {
+        auxiliar = lecturaArchivo.readLine();
+        if(auxiliar.contains(rx)){
+            QStringList partido = auxiliar.split("_");
+            QString ext = partido[3];
+            QStringList sinExt = ext.split(".");
+            QString fecha = partido[1] + "_" + partido[2] + "_" + sinExt[0];
+            ui->fechaCB->addItem(fecha);
+        }
+    }
+    bitacoraLectura.close();
+}
+
+void MainTuneladoraWindow::rellenarTabla(const QString &nombreSuelo)
+{
+    QString fecha = nombreSuelo + "_" + ui->fechaCB->currentText()  + ".txt";
+    QFile bitacoraLectura(fecha);
+    if(!bitacoraLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        ui->registroTW->setRowCount(0);
+        qDebug() << "No hay archivo para lectura Bitacora.txt...";
+        bitacoraLectura.close();
+        return;
+    }
+    QList <QString> listaDeElementos;
+    QTextStream lecturaArchivo(&bitacoraLectura);
+    while(!lecturaArchivo.atEnd()) {
+        listaDeElementos.append(lecturaArchivo.readLine());
+    }
+    bitacoraLectura.close();
+
+    ui->registroTW->setRowCount(listaDeElementos.count()/4);
+    for(int i = 0, x = 0, y = 0; i < listaDeElementos.count(); i++){
+        QTableWidgetItem *auxItem = new QTableWidgetItem(listaDeElementos.at(i));
+        ui->registroTW->setItem(x, y, auxItem);
+        y++;
+        if(y == 4){
+            y = 0;
+            x++;
+        }
     }
 }
 
@@ -237,6 +293,10 @@ void MainTuneladoraWindow::on_bitacoraBB_accepted(){
         break;
     }
     cleanBitacora();
+    QMessageBox::information(
+                        this,
+                        tr("Administracion de datos - Tuneladora"),
+                        tr("Información guardada exitosamente en la bitacora.") );
 }
 
 void MainTuneladoraWindow::on_bitacoraBB_rejected(){
@@ -251,5 +311,74 @@ void MainTuneladoraWindow::enableButtonBitacora()
     else
     {
         ui->bitacoraBB->button(QDialogButtonBox::Ok)->setEnabled(false);
+    }
+}
+
+void MainTuneladoraWindow::on_registroCB_currentIndexChanged(int index)
+{
+    ui->fechaCB->clear();
+    ui->fechaCB->addItem("Fecha...");
+    switch(index){
+    case 1:
+        cargarBitacora("Arena-Rio");
+        break;
+    case 2:
+        cargarBitacora("Arena-Amarilla");
+        break;
+    case 3:
+        cargarBitacora("Tepetate-Rosa");
+        break;
+    case 4:
+        cargarBitacora("Tepetate-Blanco");
+        break;
+    case 5:
+        cargarBitacora("Jal-Grueso");
+        break;
+    case 6:
+        cargarBitacora("Jal-Mediano");
+        break;
+    case 7:
+        cargarBitacora("Jal-Fino");
+        break;
+    case 8:
+        cargarBitacora("Arcilla-Negra");
+        break;
+    }
+}
+void MainTuneladoraWindow::on_registroPB_clicked()
+{
+    int index = ui->registroCB->currentIndex();
+    if(ui->fechaCB->currentIndex() == 0 or index == 0){
+        ui->registroTW->setRowCount(0);
+        QMessageBox::information(
+                            this,
+                            tr("Administracion de datos - Tuneladora"),
+                            tr("Seleccione primero un material o una fecha para desplegarla en la tabla.") );
+    }
+    switch (index) {
+    case 1:
+        rellenarTabla("Arena-Rio");
+        break;
+    case 2:
+        rellenarTabla("Arena-Amarilla");
+        break;
+    case 3:
+        rellenarTabla("Tepetate-Rosa");
+        break;
+    case 4:
+        rellenarTabla("Tepetate-Blanco");
+        break;
+    case 5:
+        rellenarTabla("Jal-Grueso");
+        break;
+    case 6:
+        rellenarTabla("Jal-Mediano");
+        break;
+    case 7:
+        rellenarTabla("Jal-Fino");
+        break;
+    case 8:
+        rellenarTabla("Arcilla-Negra");
+        break;
     }
 }

@@ -24,6 +24,9 @@ private slots:
     void on_bitacoraCB_currentIndexChanged(int index);
     void on_bitacoraBB_accepted();
     void on_bitacoraBB_rejected();
+    void on_registroCB_currentIndexChanged(int index);
+
+    void on_registroPB_clicked();
 
 private:
     Ui::MainTuneladoraWindow *ui;
@@ -31,6 +34,8 @@ private:
     void cleanBitacora();
     void camposEnable();
     void guardarBitacora(const QString&);
+    void cargarBitacora(const QString&);
+    void rellenarTabla(const QString &);
 };
 
 #endif // MAINTUNELADORAWINDOW_H
