@@ -2,7 +2,11 @@
 #define MAINTUNELADORAWINDOW_H
 
 #include <QMainWindow>
-#include "mainmenuwindow.h"
+#include <QFile>
+#include <QDate>
+#include <QMessageBox>
+#include <QTextStream>
+#include <qdebug.h>
 
 namespace Ui {
 class MainTuneladoraWindow;
@@ -17,23 +21,16 @@ public:
 
 private slots:
     void on_botonRegresaPB_clicked();
-
-    void on_PVSSLE_textChanged(const QString &arg1);
-
-    void on_PVSCLE_textChanged(const QString &arg1);
-
-    void on_PVMLE_textChanged(const QString &arg1);
-
     void on_bitacoraCB_currentIndexChanged(int index);
-
     void on_bitacoraBB_accepted();
-
     void on_bitacoraBB_rejected();
 
 private:
     Ui::MainTuneladoraWindow *ui;
     void enableButtonBitacora();
     void cleanBitacora();
+    void camposEnable();
+    void guardarBitacora(const QString&);
 };
 
 #endif // MAINTUNELADORAWINDOW_H
