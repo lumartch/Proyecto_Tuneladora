@@ -17,6 +17,7 @@ void MainTuneladoraWindow::on_botonRegresaPB_clicked(){
 }
 
 void MainTuneladoraWindow::cleanBitacora(){
+    //Inicializa los campos
     ui->bitacoraCB->setCurrentIndex(0);
     ui->PVSSDSP->setMinimum(0);
     ui->PVSCDSP->setMinimum(0);
@@ -29,6 +30,7 @@ void MainTuneladoraWindow::cleanBitacora(){
 
 void MainTuneladoraWindow::camposEnable()
 {
+    //Permite la escritura a los campos
     ui->PVSSDSP->setEnabled(true);
     ui->PVSCDSP->setEnabled(true);
     ui->PVMDSP->setEnabled(true);
@@ -110,6 +112,7 @@ void MainTuneladoraWindow::guardarBitacora(const QString &suelo)
 
 void MainTuneladoraWindow::cargarBitacora(const QString &nomSuelo)
 {
+    //Lee todos los archivos disponibles para un tipo de suelo
     QString auxiliar;
     QRegularExpression rx(nomSuelo);
     QFile bitacoraLectura("Bitacora.txt");
@@ -135,6 +138,7 @@ void MainTuneladoraWindow::cargarBitacora(const QString &nomSuelo)
 
 void MainTuneladoraWindow::rellenarTabla(const QString &nombreSuelo)
 {
+    //Lee los datos de los documentos y los implementa dentro del Table widget
     QString fecha = nombreSuelo + "_" + ui->fechaCB->currentText()  + ".txt";
     QFile bitacoraLectura(fecha);
     if(!bitacoraLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -305,6 +309,7 @@ void MainTuneladoraWindow::on_bitacoraBB_rejected(){
 
 void MainTuneladoraWindow::enableButtonBitacora()
 {
+    //Activa el boton de aceptar de la bitacora
     if(ui->bitacoraCB->currentIndex() > 0){
         ui->bitacoraBB->button(QDialogButtonBox::Ok)->setEnabled(true);
     }
@@ -316,6 +321,7 @@ void MainTuneladoraWindow::enableButtonBitacora()
 
 void MainTuneladoraWindow::on_registroCB_currentIndexChanged(int index)
 {
+    //Lanza la busquedas de archivos que vienen registrados en el archivo master
     ui->fechaCB->clear();
     ui->fechaCB->addItem("Fecha...");
     switch(index){
@@ -347,6 +353,7 @@ void MainTuneladoraWindow::on_registroCB_currentIndexChanged(int index)
 }
 void MainTuneladoraWindow::on_registroPB_clicked()
 {
+    //Toma el tipo de suelo y la fecha de la bitacora a cargar
     int index = ui->registroCB->currentIndex();
     if(ui->fechaCB->currentIndex() == 0 or index == 0){
         ui->registroTW->setRowCount(0);
@@ -381,4 +388,9 @@ void MainTuneladoraWindow::on_registroPB_clicked()
         rellenarTabla("Arcilla-Negra");
         break;
     }
+}
+
+void MainTuneladoraWindow::on_regresarPB_clicked()
+{
+    close();
 }

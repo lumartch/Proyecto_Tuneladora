@@ -25,8 +25,8 @@ private slots:
     void on_bitacoraBB_accepted();
     void on_bitacoraBB_rejected();
     void on_registroCB_currentIndexChanged(int index);
-
     void on_registroPB_clicked();
+    void on_regresarPB_clicked();
 
 private:
     Ui::MainTuneladoraWindow *ui;
