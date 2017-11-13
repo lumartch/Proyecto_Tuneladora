@@ -3,12 +3,10 @@
 
 MainOndasWindow::MainOndasWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainOndasWindow)
-{
+    ui(new Ui::MainOndasWindow){
     ui->setupUi(this);
 }
 
-MainOndasWindow::~MainOndasWindow()
-{
+MainOndasWindow::~MainOndasWindow(){
     delete ui;
 }

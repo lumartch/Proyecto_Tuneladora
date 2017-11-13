@@ -7,8 +7,7 @@ namespace Ui {
 class MainOndasWindow;
 }
 
-class MainOndasWindow : public QMainWindow
-{
+class MainOndasWindow : public QMainWindow{
     Q_OBJECT
 
 public:

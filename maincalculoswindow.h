@@ -34,6 +34,8 @@ private slots:
     void on_asientoVerDesLE_textChanged(const QString &arg1);
     void on_desplazamientoPB_clicked();
 
+    void on_piedraBB_rejected();
+
 private:
     Ui::MainCalculosWindow *ui;
     void limpiarCamposCU();

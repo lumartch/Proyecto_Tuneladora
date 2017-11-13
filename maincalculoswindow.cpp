@@ -5,6 +5,7 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainCalculosWindow){
     ui->setupUi(this);
+    ui->tipoPiedraTE->hide();
     //Inicializador de los disables de PushButton
     habilitarAsientoVerticalPB();
     habilitarVolumenCubeta();
@@ -74,53 +75,54 @@ void MainCalculosWindow::on_pushButton_clicked(){
     close();
 }
 
-void MainCalculosWindow::on_piedraBB_accepted()
-{
+void MainCalculosWindow::on_piedraBB_accepted(){
     //Revisar, no sirve NINGUN IF, sugerencia .toInt() o .toFloat()
+    int ondasP = ui->ondasPLE->text().toInt();
+    int ondasS = ui->ondasSLE->text().toInt();
     ui->tipoPiedraTE->show();
-    if(ui->ondasPLE->text() > 4500 && ui->ondasPLE->text() < 7500 && ui->ondasSLE->text() > 3500 && ui->ondasSLE->text() < 4000 ){
+    if(ondasP > 4500 and ondasP < 7500 and ondasS > 3500 and ondasS < 4000 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se está trabajando son Rocas Inglesas");
-    }else if(ui->ondasPLE->text() > 1400 && ui->ondasPLE->text() < 1800 && ui->ondasSLE->text() > 50 && ui->ondasSLE->text() < 100 ){
+    }else if(ondasP > 1400 && ondasP < 1800 && ondasS > 50 &&ondasS < 100 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es cieno");
-    }else if(ui->ondasPLE->text() > 300 && ui->ondasPLE->text() < 1400 && ui->ondasSLE->text() > 100 && ui->ondasSLE->text() < 500 ){
+    }else if(ondasP > 300 && ondasP < 1400 && ondasS > 100 && ondasS < 500 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es (Sedimentos no consolidados)");
-    }else if(ui->ondasPLE->text() > 1800 && ui->ondasPLE->text() < 2500 && ui->ondasSLE->text() > 100 && ui->ondasSLE->text() < 500 ){
+    }else if(ondasP > 1800 && ondasP < 2500 && ondasS > 100 && ondasS < 500 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es (Sedimentos no consolidados)");
-    }else if(ui->ondasPLE->text() > 1400 && ui->ondasPLE->text() < 1800 && ui->ondasSLE->text() > 100 && ui->ondasSLE->text() < 300 ){
+    }else if(ondasP > 1400 && ondasP < 1800 && ondasS > 100 && ondasS < 300 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es cieno ó (Sedimentos no consolidados )");
-    }else if(ui->ondasPLE->text() > 3000 && ui->ondasPLE->text() < 3500 && ui->ondasSLE->text() > 2000 && ui->ondasSLE->text() < 3000 ){
+    }else if(ondasP > 3000 && ondasP < 3500 && ondasS > 2000 && ondasS < 3000 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Limos");
-    }else if(ui->ondasPLE->text() > 1500 && ui->ondasPLE->text() < 5400 && ui->ondasSLE->text() > 800 && ui->ondasSLE->text() < 1500 ){
+    }else if(ondasP > 1500 && ondasP < 5400 && ondasS > 800 && ondasS < 1500 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es (Arenas compactas)");
-    }else if(ui->ondasPLE->text() > 3500 && ui->ondasPLE->text() < 5400 && ui->ondasSLE->text() > 1500 && ui->ondasSLE->text() < 2000 ){
+    }else if(ondasP > 3500 && ondasP < 5400 && ondasS > 1500 && ondasS < 2000 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Rocas sedimentarias ó (Arenas compactas)");
-    }else if(ui->ondasPLE->text() > 5400 && ui->ondasPLE->text() < 5500 && ui->ondasSLE->text() > 1500 && ui->ondasSLE->text() < 2000 ){
+    }else if(ondasP > 5400 && ondasP < 5500 && ondasS > 1500 && ondasS < 2000 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Rocas sedimentarias");
-    }else if(ui->ondasPLE->text() > 4500 && ui->ondasPLE->text() < 6000 && ui->ondasSLE->text() > 3000 && ui->ondasSLE->text() < 3500 ){
+    }else if(ondasP > 4500 && ondasP < 6000 && ondasS > 3000 && ondasS < 3500 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Rocas metamórficas");
-    }else if(ui->ondasPLE->text() > 4500 && ui->ondasPLE->text() < 5500 && ui->ondasSLE->text() > 2500 && ui->ondasSLE->text() < 3000 ){
+    }else if(ondasP > 4500 && ondasP < 5500 && ondasS > 2500 && ondasS < 3000 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Limos ó Rocas sedimentarias ó Rocas Metamórficas");
-    }else if(ui->ondasPLE->text() > 3000 && ui->ondasPLE->text() < 6000 && ui->ondasSLE->text() > 2000 && ui->ondasSLE->text() < 2500 ){
+    }else if(ondasP > 3000 && ondasP < 6000 && ondasS > 2000 && ondasS < 2500 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Rocas sedimentarias o Limos");
-    }else if(ui->ondasPLE->text() > 5500 && ui->ondasPLE->text() < 6000 && ui->ondasSLE->text() > 2000 && ui->ondasSLE->text() < 2500 ){
+    }else if(ondasP > 5500 && ondasP < 6000 && ondasS > 2000 && ondasS < 2500 ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Limos");
-    }else if(ui->ondasPLE->text() == "1500"  && ui->ondasSLE->text() > "0"  ){
+    }else if(ondasP == 1500  && ondasS > 0  ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es agua");
-    }else if(ui->ondasPLE->text() == "5200"  && ui->ondasSLE->text() > "3000"  ){
+    }else if(ondasP == 5200  && ondasS > 3000  ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es granito");
-    }else if(ui->ondasPLE->text() == "6400"  && ui->ondasSLE->text() > "3200"  ){
+    }else if(ondasP == 6400  && ondasS > 3200  ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es basalto");
-    }else if(ui->ondasPLE->text() == "2400"  && ui->ondasSLE->text() > "1350"  ){
+    }else if(ondasP == 2400  && ondasS > 1350  ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es calizas");
-    }else if(ui->ondasPLE->text() == "3500"  && ui->ondasSLE->text() > "2150"  ){
+    }else if(ondasP == 3500  && ondasS > 2150  ){
         ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Areniscas");
-    }else if(ui->ondasPLE->text() < 250){
+    }else if(ondasP < 250){
         ui->tipoPiedraTE->setText("No hay registro de ondas P tan bajas para ningún material");
-    }else if(ui->ondasPLE->text() > 750){
+    }else if(ondasP > 750){
         ui->tipoPiedraTE->setText("No hay registro de ondas P tan altas para ningún material");
-    }else if(ui->ondasSLE->text() > 4000){
+    }else if(ondasS > 4000){
         ui->tipoPiedraTE->setText("No hay registro de ondas S tan altas para ningún material");
-    }else if(ui->ondasPLE->text() < 50){
+    }else if(ondasP < 50){
         ui->tipoPiedraTE->setText("No hay registro de ondas S tan bajas para ningún material");
     }else{
         ui->tipoPiedraTE->setText("No hay registro de ondas P u ondas S para ningún material con esos parametros");
@@ -219,21 +221,19 @@ void MainCalculosWindow::habilitarDesplazamientoHorizontal()
     }
 }
 
-void MainCalculosWindow::on_asientoVerticalPB_clicked()
-{
+void MainCalculosWindow::on_asientoVerticalPB_clicked(){
     //Calculo del asiento vertical
     /*float e = 2.7182818284;
     float dmax = ui->asientoVerticalMaxLE->text().toFloat();
-    int x = ui->distanciaHorizontalLE->text().toInt();
-    int i = ui->puntoInflexionLE->text().toInt();
-    int exp =(-(x^2)/(2*i^2));
-    qDebug() << exp;*/
-    //float dv = dmax*e^exp;
-   // ui->asientoVerticalResLE->setText(QString::number(dv));
+    int x = ui->distanciaHorizontalLE->text().toFloat();
+    int i = ui->puntoInflexionLE->text().toFloat();
+    int exp =(-(x^2)/(2*(i^2)));
+    qDebug() << exp;
+    float dv = dmax*e^exp;
+    ui->asientoVerticalResLE->setText(QString::number(dv));*/
 }
 
-void MainCalculosWindow::on_asientoVerticalPB_2_clicked()
-{
+void MainCalculosWindow::on_asientoVerticalPB_2_clicked(){
     //Calculo de la perdida de volumen
     double vs = ui->asientoVerticalLE->text().toDouble();
     double i = ui->puntoInflexionLE_2->text().toDouble();
@@ -241,8 +241,7 @@ void MainCalculosWindow::on_asientoVerticalPB_2_clicked()
     ui->asientoVerticalResLE_2->setText(QString::number(sMax));
 }
 
-void MainCalculosWindow::on_desplazamientoPB_clicked()
-{
+void MainCalculosWindow::on_desplazamientoPB_clicked(){
     //Calculo del desplazamiento Horizontal
     float h =ui->profundidadLE->text().toFloat();
     float y = ui->distanciaHorLE->text().toFloat();
@@ -251,52 +250,51 @@ void MainCalculosWindow::on_desplazamientoPB_clicked()
     ui->desplazamientoResLE->setText(QString::number(dhY));
 }
 
-void MainCalculosWindow::on_asientoVerticalMaxLE_textChanged(const QString &arg1)
-{
+void MainCalculosWindow::on_asientoVerticalMaxLE_textChanged(const QString &arg1){
     Q_UNUSED(arg1);
     habilitarAsientoVerticalPB();
 }
 
-void MainCalculosWindow::on_distanciaHorizontalLE_textChanged(const QString &arg1)
-{
+void MainCalculosWindow::on_distanciaHorizontalLE_textChanged(const QString &arg1){
     Q_UNUSED(arg1);
     habilitarAsientoVerticalPB();
 }
 
-void MainCalculosWindow::on_puntoInflexionLE_textChanged(const QString &arg1)
-{
+void MainCalculosWindow::on_puntoInflexionLE_textChanged(const QString &arg1){
     Q_UNUSED(arg1);
     habilitarAsientoVerticalPB();
 }
 
-void MainCalculosWindow::on_asientoVerticalLE_textChanged(const QString &arg1)
-{
+void MainCalculosWindow::on_asientoVerticalLE_textChanged(const QString &arg1){
     Q_UNUSED(arg1);
     habilitarVolumenCubeta();
 }
 
-void MainCalculosWindow::on_puntoInflexionLE_2_textChanged(const QString &arg1)
-{
+void MainCalculosWindow::on_puntoInflexionLE_2_textChanged(const QString &arg1){
     Q_UNUSED(arg1);
     habilitarVolumenCubeta();
 }
 
 
-void MainCalculosWindow::on_profundidadLE_textChanged(const QString &arg1)
-{
+void MainCalculosWindow::on_profundidadLE_textChanged(const QString &arg1){
     Q_UNUSED(arg1);
     habilitarDesplazamientoHorizontal();
 }
 
-void MainCalculosWindow::on_distanciaHorLE_textChanged(const QString &arg1)
-{
+void MainCalculosWindow::on_distanciaHorLE_textChanged(const QString &arg1){
     Q_UNUSED(arg1);
     habilitarDesplazamientoHorizontal();
 }
 
-void MainCalculosWindow::on_asientoVerDesLE_textChanged(const QString &arg1)
-{
+void MainCalculosWindow::on_asientoVerDesLE_textChanged(const QString &arg1){
     Q_UNUSED(arg1);
     habilitarDesplazamientoHorizontal();
 }
 
+
+void MainCalculosWindow::on_piedraBB_rejected(){
+    ui->ondasPLE->setText("");
+    ui->ondasSLE->setText("");
+    ui->tipoPiedraTE->setText("");
+    ui->tipoPiedraTE->hide();
+}
