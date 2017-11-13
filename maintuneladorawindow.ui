@@ -6,343 +6,365 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>706</width>
-    <height>478</height>
+    <width>526</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Administración de datos - Tuneladora</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="currentIndex">
-       <number>0</number>
+   <widget class="QTabWidget" name="bitacoraTabs">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>9</y>
+      <width>501</width>
+      <height>411</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="bitacoraTab">
+     <attribute name="title">
+      <string>Bitacora</string>
+     </attribute>
+     <widget class="QComboBox" name="bitacoraCB">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>451</width>
+        <height>25</height>
+       </rect>
       </property>
-      <widget class="QWidget" name="bitacoraTab">
-       <attribute name="title">
-        <string>Bitacora</string>
-       </attribute>
-       <widget class="QComboBox" name="bitacoraCB">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>30</y>
-          <width>541</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Tipos de suelo...</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Arena de rio</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Arena amarilla</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Arena de tepetate color rosa</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Arena de tepetate color blanco</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Jal grueso</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Jal mediano</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Jal fino</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Arcilla negra</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QLabel" name="PVSSL">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>70</y>
-          <width>231</width>
-          <height>17</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Peso Volumetrico suelto seco       (Kg/cm ^2)</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="PVSCL">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>110</y>
-          <width>241</width>
-          <height>17</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Peso volumetrico seco compacto  (Kg/cm ^2)</string>
-        </property>
-       </widget>
-       <widget class="QDialogButtonBox" name="bitacoraBB">
-        <property name="geometry">
-         <rect>
-          <x>470</x>
-          <y>190</y>
-          <width>178</width>
-          <height>36</height>
-         </rect>
-        </property>
-        <property name="standardButtons">
-         <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="PVML">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>150</y>
-          <width>251</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Peso volumetrico máximo             (Kg/cm ^2)</string>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="PVSSDSP">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>70</y>
-          <width>251</width>
-          <height>22</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="PVSCDSP">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>110</y>
-          <width>251</width>
-          <height>22</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="PVMDSP">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>150</y>
-          <width>251</width>
-          <height>22</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="botonRegresaPB">
-        <property name="geometry">
-         <rect>
-          <x>500</x>
-          <y>230</y>
-          <width>151</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Regresar al menu principal...</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="registrosTab">
-       <attribute name="title">
-        <string>Registros</string>
-       </attribute>
-       <widget class="QComboBox" name="registroCB">
-        <property name="geometry">
-         <rect>
-          <x>9</x>
-          <y>9</y>
-          <width>221</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Tipos de suelo...</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Pa (Pizarras alteradas)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Pn (Pizarras negras cuarciticas)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Em (Esquistos y fillitas moteadas)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Cs (Rocas metamórficas calcosilicatadas)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Cz (Cuarcitas laminadas)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Cn (Cornubianitas)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Gr (Granodioritas)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>DP (Dique de pórfido)</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QTableWidget" name="registroTW">
-        <property name="geometry">
-         <rect>
-          <x>9</x>
-          <y>55</y>
-          <width>661</width>
-          <height>261</height>
-         </rect>
-        </property>
-        <column>
-         <property name="text">
-          <string>Hora</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>PVSS</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>PVSC</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>PVM</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Fecha</string>
-         </property>
-        </column>
-       </widget>
-       <widget class="QLabel" name="informacionPVSSL">
-        <property name="geometry">
-         <rect>
-          <x>9</x>
-          <y>340</y>
-          <width>184</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>*PVSS (Peso Volumetrico Seco Suelto) </string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="informacionPVSCL">
-        <property name="geometry">
-         <rect>
-          <x>9</x>
-          <y>321</y>
-          <width>200</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>*PVSC (Peso Volumetrico Seco Compacto)</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="informacionPVML">
-        <property name="geometry">
-         <rect>
-          <x>9</x>
-          <y>359</y>
-          <width>157</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>*PVM (Peso Volumetrico Máximo)</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="registroPB">
-        <property name="geometry">
-         <rect>
-          <x>600</x>
-          <y>333</y>
-          <width>75</width>
-          <height>27</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Mostrar</string>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-      </widget>
+      <item>
+       <property name="text">
+        <string>Tipos de suelo...</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arena de rio</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arena amarilla</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arena de tepetate color rosa</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arena de tepetate color blanco</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Jal grueso</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Jal mediano</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Jal fino</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arcilla negra</string>
+       </property>
+      </item>
      </widget>
-    </item>
-   </layout>
+     <widget class="QLabel" name="PVSSL">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>70</y>
+        <width>231</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Peso Volumetrico suelto seco       (Kg/cm ^2)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PVSCL">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>241</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Peso volumetrico seco compacto  (Kg/cm ^2)</string>
+      </property>
+     </widget>
+     <widget class="QDialogButtonBox" name="bitacoraBB">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>190</y>
+        <width>178</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PVML">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>150</y>
+        <width>251</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Peso volumetrico máximo             (Kg/cm ^2)</string>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="PVSSDSP">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>70</y>
+        <width>221</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="PVSCDSP">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>110</y>
+        <width>221</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="PVMDSP">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>150</y>
+        <width>221</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="botonRegresaPB">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>230</y>
+        <width>151</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Regresar al menu principal...</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="registrosTab">
+     <attribute name="title">
+      <string>Registros</string>
+     </attribute>
+     <widget class="QComboBox" name="registroCB">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>9</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Tipos de suelo...</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arena de rio</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arena amarilla</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arena de tepetate color rosa</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arena de tepetate color blanco</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Jal grueso</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Jal mediano</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Jal fino</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arcilla negra</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QTableWidget" name="registroTW">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>75</y>
+        <width>471</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>Hora</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>PVSS</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>PVSC</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>PVM</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="informacionPVSSL">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>340</y>
+        <width>184</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>*PVSS (Peso Volumetrico Seco Suelto) </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="informacionPVSCL">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>321</y>
+        <width>200</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>*PVSC (Peso Volumetrico Seco Compacto)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="informacionPVML">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>359</y>
+        <width>157</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>*PVM (Peso Volumetrico Máximo)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="registroPB">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>330</y>
+        <width>75</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Mostrar</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="fechaCB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>301</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="regresarPB">
+    <property name="geometry">
+     <rect>
+      <x>384</x>
+      <y>430</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Regresar al inicio...</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>706</width>
+     <width>526</width>
      <height>21</height>
     </rect>
    </property>

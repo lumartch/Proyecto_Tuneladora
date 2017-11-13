@@ -10,10 +10,6 @@ MainMenuWindow::MainMenuWindow(QWidget *parent) :
     ui->descripcionTE->setText("Bienvenido al asistente de datos de la tuneladora.");
     ui->imagenLabel->hide();
     ui->label->hide();
-    /*QMessageBox::information(
-                    this,
-                    tr("Administracion de datos - Tuneladora"),
-                    tr("Esta interfaz de usuario le permitira.. etc etc.") );*/
 }
 
 MainMenuWindow::~MainMenuWindow(){
@@ -36,6 +32,7 @@ void MainMenuWindow::on_eleccionCB_currentIndexChanged(int index){
 }
 
 void MainMenuWindow::on_aceptarPb_clicked(){
+    //Muestra el menu, ya sea para bitacora o para calculos
     if(ui->eleccionCB->currentIndex() == 1){
         //this->hide();
         ventanaBitacora = new MainTuneladoraWindow;
