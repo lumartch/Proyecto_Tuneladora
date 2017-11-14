@@ -6,6 +6,18 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     ui(new Ui::MainCalculosWindow){
     ui->setupUi(this);
     ui->tipoPiedraTE->hide();
+    ui->totalLE->hide();
+    ui->rmrTE->hide();
+    ui->resistenciaLE->hide();
+    ui->rqdLE->hide();
+    ui->espaciamientoLE->hide();
+    ui->persistenciaLE->hide();
+    ui->aperturaLE->hide();
+    ui->rugosidadLE->hide();
+    ui->rellenoLE->hide();
+    ui->intemperizacionLE->hide();
+    ui->aguaLE->hide();
+    cleanRMR();
     //Inicializador de los disables de PushButton
     habilitarAsientoVerticalPB();
     habilitarVolumenCubeta();
@@ -129,8 +141,7 @@ void MainCalculosWindow::on_piedraBB_accepted(){
     }
 }
 
-void MainCalculosWindow::on_CuButtonBox_accepted()
-{
+void MainCalculosWindow::on_CuButtonBox_accepted(){
     //Calcula el rendimiento
     float horasReales, horasEfectivas, cu;
     horasReales = ui->horasRealesLE->text().toFloat();
@@ -175,62 +186,53 @@ void MainCalculosWindow::on_CuButtonBox_accepted()
     //Posible guardado de datos
 }
 
-void MainCalculosWindow::on_CuButtonBox_rejected()
-{
+void MainCalculosWindow::on_CuButtonBox_rejected(){
     limpiarCamposCU();
 }
 
-void MainCalculosWindow::limpiarCamposCU()
-{
+void MainCalculosWindow::limpiarCamposCU(){
     //Limpia los campos
     ui->horasRealesLE->setText("");
     ui->horasEfectivasLE->setText("");
     ui->CULineEdit->setText("");
 }
 
-void MainCalculosWindow::habilitarAsientoVerticalPB()
-{
+void MainCalculosWindow::habilitarAsientoVerticalPB(){
     //Disable del boton para el calculo del asiento vertical
     if(ui->asientoVerticalMaxLE->text() > 0 and ui->distanciaHorizontalLE->text() > 0 and ui->puntoInflexionLE->text() > 0){
         ui->asientoVerticalPB->setEnabled(true);
-    }
-    else{
+    }else{
         ui->asientoVerticalPB->setDisabled(true);
     }
 }
 
-void MainCalculosWindow::habilitarVolumenCubeta()
-{
+void MainCalculosWindow::habilitarVolumenCubeta(){
     //Disable del boton para el calculo del volumen de cubeta
     if(ui->asientoVerticalLE->text() > 0 and ui->puntoInflexionLE_2->text() > 0){
         ui->asientoVerticalPB_2->setEnabled(true);
-    }
-    else{
+    }else{
         ui->asientoVerticalPB_2->setDisabled(true);
     }
 }
 
-void MainCalculosWindow::habilitarDesplazamientoHorizontal()
-{
+void MainCalculosWindow::habilitarDesplazamientoHorizontal(){
     //Disable del boton para el calculo del desplazamiento horizontal
     if(ui->profundidadLE->text() > 0 and ui->distanciaHorLE->text() > 0 and ui->asientoVerDesLE->text() > 0){
         ui->desplazamientoPB->setEnabled(true);
-    }
-    else{
+    }else{
         ui->desplazamientoPB->setDisabled(true);
     }
 }
 
 void MainCalculosWindow::on_asientoVerticalPB_clicked(){
     //Calculo del asiento vertical
-    /*float e = 2.7182818284;
     float dmax = ui->asientoVerticalMaxLE->text().toFloat();
-    int x = ui->distanciaHorizontalLE->text().toFloat();
-    int i = ui->puntoInflexionLE->text().toFloat();
-    int exp =(-(x^2)/(2*(i^2)));
+    float x = ui->distanciaHorizontalLE->text().toFloat();
+    float i = ui->puntoInflexionLE->text().toFloat();
+    float exp =(-(pow(x,2))/(2*(pow(i,2)))); //cambie el operador "^" por la funcion pow
     qDebug() << exp;
-    float dv = dmax*e^exp;
-    ui->asientoVerticalResLE->setText(QString::number(dv));*/
+    float dv = dmax*pow(2.71828182845,exp);  //puse el valor de "e" directo porque me provocaba un error y también use pow en vez del operador "^"
+    ui->asientoVerticalResLE->setText(QString::number(dv));
 }
 
 void MainCalculosWindow::on_asientoVerticalPB_2_clicked(){
@@ -297,4 +299,272 @@ void MainCalculosWindow::on_piedraBB_rejected(){
     ui->ondasSLE->setText("");
     ui->tipoPiedraTE->setText("");
     ui->tipoPiedraTE->hide();
+}
+
+void MainCalculosWindow::on_resistenciaCB_currentIndexChanged(int index){
+    switch(index){
+        case 0:
+            ui->resistenciaLE->setText("15");
+        break;
+        case 1:
+            ui->resistenciaLE->setText("12");
+        break;
+        case 2:
+            ui->resistenciaLE->setText("7");
+        break;
+        case 3:
+            ui->resistenciaLE->setText("4");
+        break;
+        case 4:
+            ui->resistenciaLE->setText("2");
+        break;
+        case 5:
+            ui->resistenciaLE->setText("1");
+        break;
+        case 6:
+            ui->resistenciaLE->setText("0");
+        break;
+        default:
+            ui->resistenciaLE->setText("15");
+        break;
+    }
+}
+
+void MainCalculosWindow::on_rqdCB_currentIndexChanged(int index){
+
+    switch(index){
+        case 0:
+            ui->rqdLE->setText("20");
+        break;
+        case 1:
+            ui->rqdLE->setText("17");
+        break;
+        case 2:
+            ui->rqdLE->setText("13");
+        break;
+        case 3:
+            ui->rqdLE->setText("8");
+        break;
+        case 4:
+            ui->rqdLE->setText("3");
+        break;
+        default:
+            ui->rqdLE->setText("20");
+        break;
+    }
+}
+
+void MainCalculosWindow::on_espaciamientoCB_currentIndexChanged(int index){
+    switch(index){
+        case 0:
+            ui->espaciamientoLE->setText("20");
+        break;
+        case 1:
+            ui->espaciamientoLE->setText("15");
+        break;
+        case 2:
+            ui->espaciamientoLE->setText("10");
+        break;
+        case 3:
+            ui->espaciamientoLE->setText("8");
+        break;
+        case 4:
+            ui->espaciamientoLE->setText("5");
+        break;
+        default:
+            ui->espaciamientoLE->setText("20");
+        break;
+    }
+}
+
+void MainCalculosWindow::on_persistenciaCB_currentIndexChanged(int index){
+    switch(index){
+        case 0:
+            ui->persistenciaLE->setText("20");
+        break;
+        case 1:
+            ui->persistenciaLE->setText("15");
+        break;
+        case 2:
+            ui->persistenciaLE->setText("10");
+        break;
+        case 3:
+            ui->persistenciaLE->setText("8");
+        break;
+        case 4:
+            ui->persistenciaLE->setText("5");
+        break;
+        default:
+            ui->persistenciaLE->setText("20");
+        break;
+    }
+}
+
+void MainCalculosWindow::on_aperturaCB_currentIndexChanged(int index){
+    switch(index){
+        case 0:
+            ui->aperturaLE->setText("20");
+        break;
+        case 1:
+            ui->aperturaLE->setText("15");
+        break;
+        case 2:
+            ui->aperturaLE->setText("10");
+        break;
+        case 3:
+            ui->aperturaLE->setText("8");
+        break;
+        case 4:
+            ui->aperturaLE->setText("5");
+        break;
+        default:
+            ui->aperturaLE->setText("20");
+        break;
+    }
+}
+
+void MainCalculosWindow::on_rugosidadCB_currentIndexChanged(int index){
+    switch(index){
+        case 0:
+            ui->rugosidadLE->setText("20");
+        break;
+        case 1:
+            ui->rugosidadLE->setText("15");
+        break;
+        case 2:
+            ui->rugosidadLE->setText("10");
+        break;
+        case 3:
+            ui->rugosidadLE->setText("8");
+        break;
+        case 4:
+            ui->rugosidadLE->setText("5");
+        break;
+        default:
+            ui->rugosidadLE->setText("20");
+        break;
+    }
+}
+
+void MainCalculosWindow::on_rellenoCB_currentIndexChanged(int index){
+    switch(index){
+        case 0:
+            ui->rellenoLE->setText("20");
+        break;
+        case 1:
+            ui->rellenoLE->setText("15");
+        break;
+        case 2:
+            ui->rellenoLE->setText("10");
+        break;
+        case 3:
+            ui->rellenoLE->setText("8");
+        break;
+        case 4:
+            ui->rellenoLE->setText("5");
+        break;
+        default:
+            ui->rellenoLE->setText("20");
+        break;
+    }
+}
+
+void MainCalculosWindow::on_intemperizacionCB_currentIndexChanged(int index){
+    switch(index){
+        case 0:
+            ui->intemperizacionLE->setText("20");
+        break;
+        case 1:
+            ui->intemperizacionLE->setText("15");
+        break;
+        case 2:
+            ui->intemperizacionLE->setText("10");
+        break;
+        case 3:
+            ui->intemperizacionLE->setText("8");
+        break;
+        case 4:
+            ui->intemperizacionLE->setText("5");
+        break;
+        default:
+            ui->intemperizacionLE->setText("20");
+        break;
+    }
+}
+
+void MainCalculosWindow::on_aguaCB_currentIndexChanged(int index){
+    switch(index){
+        case 0:
+            ui->aguaLE->setText("20");
+        break;
+        case 1:
+            ui->aguaLE->setText("15");
+        break;
+        case 2:
+            ui->aguaLE->setText("10");
+        break;
+        case 3:
+            ui->aguaLE->setText("8");
+        break;
+        case 4:
+            ui->aguaLE->setText("5");
+        break;
+        default:
+            ui->aguaLE->setText("20");
+        break;
+    }
+}
+
+void MainCalculosWindow::on_rmrBB_accepted(){
+    float resistencia = ui->resistenciaLE->text().toFloat();
+    float rqd = ui->rqdLE->text().toFloat();
+    float espaciamiento = ui->espaciamientoLE->text().toFloat();
+    float persistencia = ui->persistenciaLE->text().toFloat();
+    float apertura = ui->aperturaLE->text().toFloat();
+    float rugosidad = ui->rugosidadLE->text().toFloat();
+    float relleno = ui->rellenoLE->text().toFloat();
+    float intemperizacion = ui->intemperizacionLE->text().toFloat();
+    float agua = ui->aguaLE->text().toFloat();
+    float total = resistencia + espaciamiento + persistencia + apertura + rugosidad + rqd + relleno + intemperizacion + agua ;
+    ui->rmrTE->show();
+    if(total > 80 ){
+        ui->rmrTE->setText("Clase de macizo rocoso MUY BUENA");
+    }else if(total < 80 and total > 60){
+        ui->rmrTE->setText("Clase de macizo rocoso BUENA");
+    }else if(total < 60 and total > 40){
+        ui->rmrTE->setText("Clase de macizo rocoso REGULAR");
+    }else if(total < 40 and total > 20){
+        ui->rmrTE->setText("Clase de macizo rocoso MALA");
+    }else if(total < 20){
+        ui->rmrTE->setText("Clase de macizo rocoso MUY MALA");
+    }else{
+        ui->rmrTE->setText("Clase de macizo rocoso no encontrada");
+    }
+}
+
+void MainCalculosWindow::cleanRMR(){
+    ui->resistenciaLE->setText("15");
+    ui->rqdLE->setText("20");
+    ui->espaciamientoLE->setText("20");
+    ui->persistenciaLE->setText("6");
+    ui->aperturaLE->setText("6");
+    ui->rugosidadLE->setText("6");
+    ui->rellenoLE->setText("6");
+    ui->intemperizacionLE->setText("6");
+    ui->aguaLE->setText("15");
+    ui->resistenciaCB->setCurrentIndex(0);
+    ui->rqdCB->setCurrentIndex(0);
+    ui->espaciamientoCB->setCurrentIndex(0);
+    ui->persistenciaCB->setCurrentIndex(0);
+    ui->aperturaCB->setCurrentIndex(0);
+    ui->rugosidadCB->setCurrentIndex(0);
+    ui->rellenoCB->setCurrentIndex(0);
+    ui->intemperizacionCB->setCurrentIndex(0);
+    ui->aguaCB->setCurrentIndex(0);
+}
+
+void MainCalculosWindow::on_rmrBB_rejected(){
+    cleanRMR();
+    ui->rmrTE->setText("");
+    ui->rmrTE->hide();
 }

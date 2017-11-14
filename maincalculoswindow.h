@@ -36,8 +36,31 @@ private slots:
 
     void on_piedraBB_rejected();
 
+    void on_resistenciaCB_currentIndexChanged(int index);
+
+    void on_rqdCB_currentIndexChanged(int index);
+
+    void on_espaciamientoCB_currentIndexChanged(int index);
+
+    void on_persistenciaCB_currentIndexChanged(int index);
+
+    void on_aperturaCB_currentIndexChanged(int index);
+
+    void on_rugosidadCB_currentIndexChanged(int index);
+
+    void on_rellenoCB_currentIndexChanged(int index);
+
+    void on_intemperizacionCB_currentIndexChanged(int index);
+
+    void on_aguaCB_currentIndexChanged(int index);
+
+    void on_rmrBB_accepted();
+
+    void on_rmrBB_rejected();
+
 private:
     Ui::MainCalculosWindow *ui;
+    void cleanRMR();
     void limpiarCamposCU();
     void habilitarAsientoVerticalPB();
     void habilitarVolumenCubeta();
