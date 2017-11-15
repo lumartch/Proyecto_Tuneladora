@@ -148,7 +148,17 @@ void MainCalculosWindow::on_CuButtonBox_accepted(){
     horasEfectivas = ui->horasEfectivasLE->text().toFloat();
     cu = horasReales / horasEfectivas;
     ui->CULineEdit->setText(QString::number(cu));
-    if(cu >= 0.46 and cu < 50){
+    if(cu > 0.5){
+        QMessageBox::information(
+                            this,
+                            tr("Administracion de datos - Calculos"),
+                            tr("Este dato es imposible.\n"
+                               "El coeficiente de utilizacion\n"
+                               "nunca supera el 50%.") );
+        return;
+
+    }
+    else if(cu >= 0.46 and cu <= 0.5){
         QMessageBox::information(
                             this,
                             tr("Administracion de datos - Calculos"),
@@ -169,10 +179,19 @@ void MainCalculosWindow::on_CuButtonBox_accepted(){
         QMessageBox::information(
                             this,
                             tr("Administracion de datos - Calculos"),
-                            tr("Condiciones de trabajo normales - duras.\n"
+                            tr("Condiciones de trabajo normales.\n"
+                               "Roca dura.\n"
+                               "Sostenimiento muy ligero.\n"
+                               "Filtración de agua 6 l/seg.") );
+    }
+    else if(cu >= 0.20 and cu < 0.34){
+        QMessageBox::information(
+                            this,
+                            tr("Administracion de datos - Calculos"),
+                            tr("Condiciones de trabajo duras.\n"
                                "Roca muy dura y abrasiva.\n"
-                               "Sostenimiento ligero o muy ligero.\n"
-                               "6 l/seg < Filtración de agua < 32 l/seg.") );
+                               "Sostenimiento ligero.\n"
+                               "Filtración de agua < 32 l/seg.") );
     }
     else if(cu >= 0 and cu < 0.20){
         QMessageBox::information(
@@ -183,7 +202,12 @@ void MainCalculosWindow::on_CuButtonBox_accepted(){
                                "Sostenimiento considerable\n"
                                "Filtración de agua alta > 32 l/seg.") );
     }
-    //Posible guardado de datos
+    //Guardado de datos
+    guardadoRendimiento();
+    QMessageBox::information(
+                        this,
+                        tr("Administracion de datos - Calculos"),
+                        tr("Información guardada en bitacora.") );
 }
 
 void MainCalculosWindow::on_CuButtonBox_rejected(){
@@ -221,6 +245,82 @@ void MainCalculosWindow::habilitarDesplazamientoHorizontal(){
         ui->desplazamientoPB->setEnabled(true);
     }else{
         ui->desplazamientoPB->setDisabled(true);
+    }
+}
+
+void MainCalculosWindow::guardadoRendimiento()
+{
+    //Bitacora del rendimiento
+    float horasReales = ui->horasRealesLE->text().toFloat();
+    float horasEfectivas = ui->horasEfectivasLE->text().toFloat();
+    float cu = horasReales / horasEfectivas;
+
+    //Lectura de las bitacoras de rendimiento
+    QFile bitacoraRendimiento("RendimientoBitacora.txt");
+    QString auxStr;
+    if(!bitacoraRendimiento.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "No hay archivo para lectura RendimientoBitacora.txt...";
+        bitacoraRendimiento.close();
+    }
+    else{
+        QTextStream lecturaSuelo(&bitacoraRendimiento);
+        while(!lecturaSuelo.atEnd()) {
+            auxStr += lecturaSuelo.readLine() + "\n";
+        }
+        bitacoraRendimiento.close();
+    }
+
+    //Bitacora rendimiento guardado
+    QTime horaLocal = QTime::currentTime();
+    QDate tiempoLocal = QDate::currentDate();
+    QFile bitRendActualizada("RendimientoBitacora.txt");
+    if(!bitRendActualizada.open(QIODevice::WriteOnly | QIODevice::Text)){
+        bitRendActualizada.close();
+        return;
+    }
+    else{
+        QTextStream salida(&bitRendActualizada);
+        QString fechaStr = QString::number(tiempoLocal.day()) + "/"
+                + QString::number(tiempoLocal.month()) + "/" + QString::number(tiempoLocal.year());
+        QString horaStr = '[' + QString::number(horaLocal.hour()) + ':'
+                + QString::number(horaLocal.minute()) + ']';
+        salida << auxStr;
+        salida << fechaStr + "\n";
+        salida << horaStr + "\n";
+        salida << ui->horasRealesLE->text() << "\n";
+        salida << ui->horasEfectivasLE->text() << "\n";
+        salida << QString::number(cu) << "\n";
+        bitRendActualizada.close();
+    }
+
+}
+
+void MainCalculosWindow::on_historialPB_clicked()
+{
+    //Lee los datos que contiene la bitacora de rendimiento
+    QFile bitacoraLectura("RendimientoBitacora.txt");
+    if(!bitacoraLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        ui->historialTW->setRowCount(0);
+        qDebug() << "No hay archivo para lectura RendimientoBitacora.txt...";
+        bitacoraLectura.close();
+        return;
+    }
+    QList <QString> listaDeElementos;
+    QTextStream lecturaArchivo(&bitacoraLectura);
+    while(!lecturaArchivo.atEnd()) {
+        listaDeElementos.append(lecturaArchivo.readLine());
+    }
+    bitacoraLectura.close();
+
+    ui->historialTW->setRowCount(listaDeElementos.count()/5);
+    for(int i = 0, x = 0, y = 0; i < listaDeElementos.count(); i++){
+        QTableWidgetItem *auxItem = new QTableWidgetItem(listaDeElementos.at(i));
+        ui->historialTW->setItem(x, y, auxItem);
+        y++;
+        if(y == 5){
+            y = 0;
+            x++;
+        }
     }
 }
 
@@ -568,3 +668,5 @@ void MainCalculosWindow::on_rmrBB_rejected(){
     ui->rmrTE->setText("");
     ui->rmrTE->hide();
 }
+
+

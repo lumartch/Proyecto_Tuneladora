@@ -171,100 +171,106 @@ void MainTuneladoraWindow::on_bitacoraCB_currentIndexChanged(int index){
     enableButtonBitacora();
     camposEnable();
     switch (index) {
-    case 0:
-        cleanBitacora();
-        break;
-    //Arena de rio
-    case 1:
-        ui->PVSSDSP->setMaximum(1500);
-        ui->PVSSDSP->setMinimum(1400);
+        case 0:
+            cleanBitacora();
+            break;
+        //Arena de rio
+        case 1:
+            ui->PVSSDSP->setMaximum(1500);
+            ui->PVSSDSP->setMinimum(1400);
 
-        ui->PVSCDSP->setMinimum(1600);
-        ui->PVSCDSP->setDisabled(true);
+            ui->PVSCDSP->setMinimum(1600);
+            ui->PVSCDSP->setMaximum(1600);
+            ui->PVSCDSP->setDisabled(true);
 
-        ui->PVMDSP->setMinimum(1500);
-        ui->PVMDSP->setDisabled(true);
-        break;
-    //Arena amarilla
-    case 2:
-        ui->PVSSDSP->setMaximum(1000);
-        ui->PVSSDSP->setMinimum(1100);
+            ui->PVMDSP->setMinimum(1500);
+            ui->PVMDSP->setMaximum(1500);
+            ui->PVMDSP->setDisabled(true);
+            break;
+        //Arena amarilla
+        case 2:
+            ui->PVSSDSP->setMaximum(1000);
+            ui->PVSSDSP->setMinimum(1100);
 
-        ui->PVSCDSP->setMaximum(1200);
-        ui->PVSCDSP->setMinimum(1120);
+            ui->PVSCDSP->setMaximum(1200);
+            ui->PVSCDSP->setMinimum(1120);
 
-        ui->PVMDSP->setMinimum(1350);
-        ui->PVMDSP->setDisabled(true);
-        break;
-    //Arena rosa
-    case 3:
-        ui->PVSSDSP->setMinimum(990);
-        ui->PVSSDSP->setDisabled(true);
+            ui->PVMDSP->setMinimum(1350);
+            ui->PVMDSP->setMaximum(1350);
+            ui->PVMDSP->setDisabled(true);
+            break;
+        //Arena rosa
+        case 3:
+            ui->PVSSDSP->setMinimum(990);
+            ui->PVSSDSP->setMaximum(900);
+            ui->PVSSDSP->setDisabled(true);
 
-        ui->PVSCDSP->setMinimum(1100);
-        ui->PVSCDSP->setDisabled(true);
+            ui->PVSCDSP->setMinimum(1100);
+            ui->PVSCDSP->setMaximum(1100);
+            ui->PVSCDSP->setDisabled(true);
 
-        ui->PVMDSP->setMaximum(1350);
-        ui->PVMDSP->setMinimum(1400);
-        break;
-    //Arena blanca
-    case 4:
-        ui->PVSSDSP->setMaximum(1050);
-        ui->PVSSDSP->setMinimum(1100);
+            ui->PVMDSP->setMaximum(1400);
+            ui->PVMDSP->setMinimum(1350);
+            break;
+        //Arena blanca
+        case 4:
+            ui->PVSSDSP->setMaximum(1050);
+            ui->PVSSDSP->setMinimum(1100);
 
-        ui->PVSCDSP->setMaximum(1200);
-        ui->PVSCDSP->setMinimum(1150);
+            ui->PVSCDSP->setMaximum(1200);
+            ui->PVSCDSP->setMinimum(1150);
 
-        ui->PVMDSP->setMinimum(1400);
-        ui->PVMDSP->setDisabled(true);
-        break;
-    //Jal grueso
-    case 5:
-        ui->PVSSDSP->setMaximum(700);
-        ui->PVSSDSP->setMinimum(600);
+            ui->PVMDSP->setMinimum(1400);
+            ui->PVMDSP->setMaximum(1400);
+            ui->PVMDSP->setDisabled(true);
+            break;
+        //Jal grueso
+        case 5:
+            ui->PVSSDSP->setMaximum(700);
+            ui->PVSSDSP->setMinimum(600);
 
-        ui->PVSCDSP->setMaximum(900);
-        ui->PVSCDSP->setMinimum(780);
+            ui->PVSCDSP->setMaximum(900);
+            ui->PVSCDSP->setMinimum(780);
 
-        ui->PVMDSP->setMaximum(1180);
-        ui->PVMDSP->setMinimum(1000);
-        break;
-    //Jal mediano
-    case 6:
-        ui->PVSSDSP->setMaximum(750);
-        ui->PVSSDSP->setMinimum(650);
+            ui->PVMDSP->setMaximum(1180);
+            ui->PVMDSP->setMinimum(1000);
+            break;
+        //Jal mediano
+        case 6:
+            ui->PVSSDSP->setMaximum(750);
+            ui->PVSSDSP->setMinimum(650);
 
-        ui->PVSCDSP->setMaximum(1000);
-        ui->PVSCDSP->setMinimum(300);
+            ui->PVSCDSP->setMaximum(1000);
+            ui->PVSCDSP->setMinimum(300);
 
-        ui->PVMDSP->setMaximum(1280);
-        ui->PVMDSP->setMinimum(1150);
-        break;
-    //Jal fino
-    case 7:
-        ui->PVSSDSP->setMaximum(650);
-        ui->PVSSDSP->setMinimum(600);
+            ui->PVMDSP->setMaximum(1280);
+            ui->PVMDSP->setMinimum(1150);
+            break;
+        //Jal fino
+        case 7:
+            ui->PVSSDSP->setMaximum(650);
+            ui->PVSSDSP->setMinimum(600);
 
-        ui->PVSCDSP->setMaximum(1000);
-        ui->PVSCDSP->setMinimum(750);
+            ui->PVSCDSP->setMaximum(1000);
+            ui->PVSCDSP->setMinimum(750);
 
-        ui->PVMDSP->setMaximum(1250);
-        ui->PVMDSP->setMinimum(1100);
-        break;
-    //Arcilla amarilla
-    case 8:
-        ui->PVSSDSP->setMaximum(1000);
-        ui->PVSSDSP->setMinimum(920);
+            ui->PVMDSP->setMaximum(1250);
+            ui->PVMDSP->setMinimum(1100);
+            break;
+        //Arcilla amarilla
+        case 8:
+            ui->PVSSDSP->setMaximum(1000);
+            ui->PVSSDSP->setMinimum(920);
 
-        ui->PVSCDSP->setMaximum(1100);
-        ui->PVSCDSP->setMinimum(1050);
+            ui->PVSCDSP->setMaximum(1100);
+            ui->PVSCDSP->setMinimum(1050);
 
-        ui->PVMDSP->setMaximum(1600);
-        ui->PVMDSP->setMinimum(1500);
-        break;
-    default:
-        break;
-    }
+            ui->PVMDSP->setMaximum(1600);
+            ui->PVMDSP->setMinimum(1500);
+            break;
+        default:
+            break;
+        }
 }
 
 void MainTuneladoraWindow::on_bitacoraBB_accepted(){

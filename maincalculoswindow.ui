@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="asientosPerdidasSeccionTab">
      <attribute name="title">
@@ -932,7 +932,7 @@
      <widget class="QDialogButtonBox" name="CuButtonBox">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>320</x>
         <y>140</y>
         <width>156</width>
         <height>23</height>
@@ -947,7 +947,7 @@
        <rect>
         <x>20</x>
         <y>20</y>
-        <width>351</width>
+        <width>461</width>
         <height>24</height>
        </rect>
       </property>
@@ -969,7 +969,7 @@
        <rect>
         <x>20</x>
         <y>60</y>
-        <width>351</width>
+        <width>461</width>
         <height>24</height>
        </rect>
       </property>
@@ -991,7 +991,7 @@
        <rect>
         <x>20</x>
         <y>100</y>
-        <width>351</width>
+        <width>461</width>
         <height>24</height>
        </rect>
       </property>
@@ -1007,6 +1007,54 @@
         <widget class="QLineEdit" name="CULineEdit"/>
        </item>
       </layout>
+     </widget>
+     <widget class="QTableWidget" name="historialTW">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>180</y>
+        <width>461</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>Fecha</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Hora</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Horas reales</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Horas efectivas</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>CU</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="historialPB">
+      <property name="geometry">
+       <rect>
+        <x>384</x>
+        <y>430</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cargar historial</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="calculoPiedraTab">
@@ -1287,7 +1335,7 @@
      <x>0</x>
      <y>0</y>
      <width>533</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
