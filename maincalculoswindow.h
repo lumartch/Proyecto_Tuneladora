@@ -51,6 +51,8 @@ private slots:
 
     void on_historialPB_clicked();
 
+    void on_discontinuidadCB_currentIndexChanged(int index);
+
 private:
     Ui::MainCalculosWindow *ui;
     void cleanRMR();
@@ -59,6 +61,17 @@ private:
     void habilitarVolumenCubeta();
     void habilitarDesplazamientoHorizontal();
     void guardadoRendimiento();
+    float intemperizacion;
+    float agua;
+    float resistencia;
+    float rqd;
+    float apertura;
+    float rugosidad;
+    float relleno;
+    float persistencia;
+    float espaciamiento;
+    float total;
+    float ajuste;
 };
 
 #endif // MAINCALCULOSWINDOW_H
