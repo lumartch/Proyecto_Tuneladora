@@ -186,8 +186,8 @@ void MainTuneladoraWindow::on_bitacoraCB_currentIndexChanged(int index){
             break;
         //Arena amarilla
         case 2:
-            ui->PVSSDSP->setMaximum(1000);
-            ui->PVSSDSP->setMinimum(1100);
+            ui->PVSSDSP->setMaximum(1100);
+            ui->PVSSDSP->setMinimum(1000);
 
             ui->PVSCDSP->setMaximum(1200);
             ui->PVSCDSP->setMinimum(1120);
@@ -211,8 +211,8 @@ void MainTuneladoraWindow::on_bitacoraCB_currentIndexChanged(int index){
             break;
         //Arena blanca
         case 4:
-            ui->PVSSDSP->setMaximum(1050);
-            ui->PVSSDSP->setMinimum(1100);
+            ui->PVSSDSP->setMaximum(1100);
+            ui->PVSSDSP->setMinimum(1050);
 
             ui->PVSCDSP->setMaximum(1200);
             ui->PVSCDSP->setMinimum(1150);
