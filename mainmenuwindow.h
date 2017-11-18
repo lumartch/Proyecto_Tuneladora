@@ -28,6 +28,7 @@ private:
     MainCalculosWindow *ventanaCalculos;
     MainTuneladoraWindow *ventanaBitacora;
     MainOndasWindow *ventanaFrente;
+    //VersionProgramaDialog *ventanaVersion;
 };
 
 #endif // MAINMENUWINDOW_H

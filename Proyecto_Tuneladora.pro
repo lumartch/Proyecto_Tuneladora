@@ -29,18 +29,33 @@ SOURCES += \
     maincalculoswindow.cpp \
     mainmenuwindow.cpp \
     mainondaswindow.cpp \
-    tablafrentedialog.cpp
+    tablafrentedialog.cpp \
+    versionprogramadialog.cpp \
+    volumenasientodialog.cpp \
+    desplazamientohorizontaldialog.cpp \
+    asientoverticaldialog.cpp \
+    rmrdialog.cpp
 
 HEADERS += \
         maintuneladorawindow.h \
     maincalculoswindow.h \
     mainmenuwindow.h \
     mainondaswindow.h \
-    tablafrentedialog.h
+    tablafrentedialog.h \
+    versionprogramadialog.h \
+    volumenasientodialog.h \
+    desplazamientohorizontaldialog.h \
+    asientoverticaldialog.h \
+    rmrdialog.h
 
 FORMS += \
         maintuneladorawindow.ui \
     maincalculoswindow.ui \
     mainmenuwindow.ui \
     mainondaswindow.ui \
-    tablafrentedialog.ui
+    tablafrentedialog.ui \
+    versionprogramadialog.ui \
+    volumenasientodialog.ui \
+    desplazamientohorizontaldialog.ui \
+    asientoverticaldialog.ui \
+    rmrdialog.ui

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RMRDialog</class>
+ <widget class="QDialog" name="RMRDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>978</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QTableWidget" name="historialTW">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>951</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>Fecha</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Hora</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Resistencia</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Espaciamiento</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Persistencia </string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Apertura </string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Rugosidad </string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>RQD</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Relleno</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Intemperizacion</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Agua</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Ajuste</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>RMR</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Conclusión</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="exportarPB">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>220</y>
+     <width>111</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Exportar Archivo...</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="regresarPB">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>250</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Regresar...</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

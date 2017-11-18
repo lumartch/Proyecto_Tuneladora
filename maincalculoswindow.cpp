@@ -232,7 +232,191 @@ void MainCalculosWindow::guardadoRendimiento(){
         salida << QString::number(cu) << "\n";
         bitRendActualizada.close();
     }
+}
 
+void MainCalculosWindow::guardarAsientoVertical()
+{
+    //Bitacora del asiento vertical
+    float dmax = ui->asientoVerticalMaxLE->text().toFloat();
+    float x = ui->distanciaHorizontalLE->text().toFloat();
+    float i = ui->puntoInflexionLE->text().toFloat();
+    float exp =(-(pow(x,2))/(2*(pow(i,2))));
+    float dv = dmax*pow(2.71828182845,exp);
+
+    //Lectura de las bitacoras de asiento vertical
+    QFile bitacoraAsVertical("AsientoVerticalBitacora.txt");
+    QString auxStr;
+    if(!bitacoraAsVertical.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        bitacoraAsVertical.close();
+    }else{
+        QTextStream lecturaAsVertical(&bitacoraAsVertical);
+        while(!lecturaAsVertical.atEnd()) {
+            auxStr += lecturaAsVertical.readLine() + "\n";
+        }
+        bitacoraAsVertical.close();
+    }
+
+    //Bitacora asiento vertical guardado
+    QTime horaLocal = QTime::currentTime();
+    QDate tiempoLocal = QDate::currentDate();
+    QFile bitAsVertActualizada("AsientoVerticalBitacora.txt");
+    if(!bitAsVertActualizada.open(QIODevice::WriteOnly | QIODevice::Text)){
+        bitAsVertActualizada.close();
+        return;
+    }else{
+        QTextStream salida(&bitAsVertActualizada);
+        QString fechaStr = QString::number(tiempoLocal.day()) + "/"
+                + QString::number(tiempoLocal.month()) + "/" + QString::number(tiempoLocal.year());
+        QString horaStr = '[' + QString::number(horaLocal.hour()) + ':'
+                + QString::number(horaLocal.minute()) + ']';
+        salida << auxStr;
+        salida << fechaStr + "\n";
+        salida << horaStr + "\n";
+        salida << ui->asientoVerticalMaxLE->text() << "\n";
+        salida << ui->distanciaHorizontalLE->text() << "\n";
+        salida << ui->puntoInflexionLE->text() << "\n";
+        salida << QString::number(dv) << "\n";
+        bitAsVertActualizada.close();
+    }
+
+}
+
+void MainCalculosWindow::guardarVolumenAsiento()
+{
+    //Bitacora del volumen asiento
+    double vs = ui->asientoVerticalLE->text().toDouble();
+    double i = ui->puntoInflexionLE_2->text().toDouble();
+    double sMax = vs/sqrt(3.1426*2*i);
+
+    //Lectura de las bitacoras del volumen asiento
+    QFile bitacoraVolAs("VolumenAsientoBitacora.txt");
+    QString auxStr;
+    if(!bitacoraVolAs.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        bitacoraVolAs.close();
+    }else{
+        QTextStream lecturaVolAs(&bitacoraVolAs);
+        while(!lecturaVolAs.atEnd()) {
+            auxStr += lecturaVolAs.readLine() + "\n";
+        }
+        bitacoraVolAs.close();
+    }
+
+    //Bitacora volumen asiento guardado
+    QTime horaLocal = QTime::currentTime();
+    QDate tiempoLocal = QDate::currentDate();
+    QFile bitVolAsActualizada("VolumenAsientoBitacora.txt");
+    if(!bitVolAsActualizada.open(QIODevice::WriteOnly | QIODevice::Text)){
+        bitVolAsActualizada.close();
+        return;
+    }else{
+        QTextStream salida(&bitVolAsActualizada);
+        QString fechaStr = QString::number(tiempoLocal.day()) + "/"
+                + QString::number(tiempoLocal.month()) + "/" + QString::number(tiempoLocal.year());
+        QString horaStr = '[' + QString::number(horaLocal.hour()) + ':'
+                + QString::number(horaLocal.minute()) + ']';
+        salida << auxStr;
+        salida << fechaStr + "\n";
+        salida << horaStr + "\n";
+        salida << ui->asientoVerticalLE->text() << "\n";
+        salida << ui->puntoInflexionLE_2->text() << "\n";
+        salida << QString::number(sMax) << "\n";
+        bitVolAsActualizada.close();
+    }
+}
+
+void MainCalculosWindow::guardarDesHorizontal()
+{
+    //Bitacora del Desplazamiento Horizontal
+    float h =ui->profundidadLE->text().toFloat();
+    float y = ui->distanciaHorLE->text().toFloat();
+    float sv = ui->asientoVerDesLE->text().toFloat();
+    float dhY = (y/h)*sv;
+
+    //Lectura de las bitacoras del Desplazamiento Horizontal
+    QFile bitacoraDesHor("DesplazamientoHorizontalBitacora.txt");
+    QString auxStr;
+    if(!bitacoraDesHor.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        bitacoraDesHor.close();
+    }else{
+        QTextStream lecturaDesHor(&bitacoraDesHor);
+        while(!lecturaDesHor.atEnd()) {
+            auxStr += lecturaDesHor.readLine() + "\n";
+        }
+        bitacoraDesHor.close();
+    }
+
+    //Bitacora Desplazamiento Horizontal guardado
+    QTime horaLocal = QTime::currentTime();
+    QDate tiempoLocal = QDate::currentDate();
+    QFile bitDesHorActualizada("DesplazamientoHorizontalBitacora.txt");
+    if(!bitDesHorActualizada.open(QIODevice::WriteOnly | QIODevice::Text)){
+        bitDesHorActualizada.close();
+        return;
+    }else{
+        QTextStream salida(&bitDesHorActualizada);
+        QString fechaStr = QString::number(tiempoLocal.day()) + "/"
+                + QString::number(tiempoLocal.month()) + "/" + QString::number(tiempoLocal.year());
+        QString horaStr = '[' + QString::number(horaLocal.hour()) + ':'
+                + QString::number(horaLocal.minute()) + ']';
+        salida << auxStr;
+        salida << fechaStr + "\n";
+        salida << horaStr + "\n";
+        salida << ui->profundidadLE->text() << "\n";
+        salida << ui->distanciaHorLE->text() << "\n";
+        salida << ui->asientoVerDesLE->text() << "\n";
+        salida << QString::number(dhY) << "\n";
+        bitDesHorActualizada.close();
+    }
+}
+
+void MainCalculosWindow::guardarRMR(const QString &resultado)
+{
+    //Bitacora del RMR
+    float total = resistencia + espaciamiento + persistencia + apertura +
+            rugosidad + rqd + relleno + intemperizacion + agua + ajuste;
+    //Lectura de las bitacoras del RMR
+    QFile bitacoraRMR("RMRBitacora.txt");
+    QString auxStr;
+    if(!bitacoraRMR.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        bitacoraRMR.close();
+    }else{
+        QTextStream lecturaRMR(&bitacoraRMR);
+        while(!lecturaRMR.atEnd()) {
+            auxStr += lecturaRMR.readLine() + "\n";
+        }
+        bitacoraRMR.close();
+    }
+
+    //Bitacora RMR guardado
+    QTime horaLocal = QTime::currentTime();
+    QDate tiempoLocal = QDate::currentDate();
+    QFile bitRMRActualizada("RMRBitacora.txt");
+    if(!bitRMRActualizada.open(QIODevice::WriteOnly | QIODevice::Text)){
+        bitRMRActualizada.close();
+        return;
+    }else{
+        QTextStream salida(&bitRMRActualizada);
+        QString fechaStr = QString::number(tiempoLocal.day()) + "/"
+                + QString::number(tiempoLocal.month()) + "/" + QString::number(tiempoLocal.year());
+        QString horaStr = '[' + QString::number(horaLocal.hour()) + ':'
+                + QString::number(horaLocal.minute()) + ']';
+        salida << auxStr;
+        salida << fechaStr + "\n";
+        salida << horaStr + "\n";
+        salida << QString::number(resistencia) << "\n";
+        salida << QString::number(espaciamiento) << "\n";
+        salida << QString::number(persistencia) << "\n";
+        salida << QString::number(apertura) << "\n";
+        salida << QString::number(rugosidad) << "\n";
+        salida << QString::number(rqd) << "\n";
+        salida << QString::number(relleno) << "\n";
+        salida << QString::number(intemperizacion) << "\n";
+        salida << QString::number(agua) << "\n";
+        salida << QString::number(ajuste) << "\n";
+        salida << QString::number(total) << "\n";
+        salida << resultado << "\n";
+        bitRMRActualizada.close();
+    }
 }
 
 void MainCalculosWindow::on_historialPB_clicked(){
@@ -277,6 +461,7 @@ void MainCalculosWindow::on_asientoVerticalPB_clicked(){
     qDebug() << exp;
     float dv = dmax*pow(2.71828182845,exp);  //puse el valor de "e" directo porque me provocaba un error y también use pow en vez del operador "^"
     ui->asientoVerticalResLE->setText(QString::number(dv));
+    guardarAsientoVertical();
 }
 
 void MainCalculosWindow::on_asientoVerticalPB_2_clicked(){
@@ -285,6 +470,7 @@ void MainCalculosWindow::on_asientoVerticalPB_2_clicked(){
     double i = ui->puntoInflexionLE_2->text().toDouble();
     double sMax = vs/sqrt(3.1426*2*i);
     ui->asientoVerticalResLE_2->setText(QString::number(sMax));
+    guardarVolumenAsiento();
 }
 
 void MainCalculosWindow::on_desplazamientoPB_clicked(){
@@ -294,6 +480,7 @@ void MainCalculosWindow::on_desplazamientoPB_clicked(){
     float sv = ui->asientoVerDesLE->text().toFloat();
     float dhY = (y/h)*sv;
     ui->desplazamientoResLE->setText(QString::number(dhY));
+    guardarDesHorizontal();
 }
 
 void MainCalculosWindow::on_asientoVerticalMaxLE_textChanged(const QString &arg1){
@@ -551,21 +738,30 @@ void MainCalculosWindow::on_aguaCB_currentIndexChanged(int index){
 }
 
 void MainCalculosWindow::on_rmrBB_accepted(){
-    float total = resistencia + espaciamiento + persistencia + apertura + rugosidad + rqd + relleno + intemperizacion + agua + ajuste;
+    float total = resistencia + espaciamiento + persistencia + apertura +
+            rugosidad + rqd + relleno + intemperizacion + agua + ajuste;
     ui->rmrTE->show();
+    QString resultado;
     if(total > 80 ){
         ui->rmrTE->setText("Clase de macizo rocoso MUY BUENA");
+        resultado = "MUY BUENA";
     }else if(total < 80 and total > 60){
         ui->rmrTE->setText("Clase de macizo rocoso BUENA");
+        resultado = "BUENA";
     }else if(total < 60 and total > 40){
         ui->rmrTE->setText("Clase de macizo rocoso REGULAR");
+        resultado = "REGULAR";
     }else if(total < 40 and total > 20){
         ui->rmrTE->setText("Clase de macizo rocoso MALA");
+        resultado = "MALA";
     }else if(total < 20){
         ui->rmrTE->setText("Clase de macizo rocoso MUY MALA");
+        resultado = "MUY MALA";
     }else{
         ui->rmrTE->setText("Clase de macizo rocoso no encontrada");
+        resultado = "NADA";
     }
+    guardarRMR(resultado);
 }
 
 void MainCalculosWindow::cleanRMR(){
@@ -655,4 +851,28 @@ void MainCalculosWindow::on_exportarPB_clicked()
                             tr("Cálculos - Tuneladora"),
                             tr("Archivo exportado exitosamente.") );
     }
+}
+
+void MainCalculosWindow::on_asVerHistorialPB_clicked()
+{
+    AsientoVerticalDialog *ventana = new AsientoVerticalDialog;
+    ventana->show();
+}
+
+void MainCalculosWindow::on_volAsHistorialPB_clicked()
+{
+    VolumenAsientoDialog *ventana = new VolumenAsientoDialog;
+    ventana->show();
+}
+
+void MainCalculosWindow::on_desHorPB_clicked()
+{
+    DesplazamientoHorizontalDialog *ventana = new DesplazamientoHorizontalDialog;
+    ventana->show();
+}
+
+void MainCalculosWindow::on_historialPB_2_clicked()
+{
+    RMRDialog *ventana = new RMRDialog;
+    ventana->show();
 }

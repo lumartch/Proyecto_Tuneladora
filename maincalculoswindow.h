@@ -10,6 +10,10 @@
 #include <QFileDialog>
 #include <QDate>
 #include <QTextStream>
+#include "asientoverticaldialog.h"
+#include "desplazamientohorizontaldialog.h"
+#include "volumenasientodialog.h"
+#include "rmrdialog.h"
 
 namespace Ui {
 class MainCalculosWindow;
@@ -52,6 +56,14 @@ private slots:
     void on_discontinuidadCB_currentIndexChanged(int index);
     void on_exportarPB_clicked();
 
+    void on_asVerHistorialPB_clicked();
+
+    void on_volAsHistorialPB_clicked();
+
+    void on_desHorPB_clicked();
+
+    void on_historialPB_2_clicked();
+
 private:
     Ui::MainCalculosWindow *ui;
     void cleanRMR();
@@ -60,6 +72,10 @@ private:
     void habilitarVolumenCubeta();
     void habilitarDesplazamientoHorizontal();
     void guardadoRendimiento();
+    void guardarAsientoVertical();
+    void guardarVolumenAsiento();
+    void guardarDesHorizontal();
+    void guardarRMR(const QString &);
     float intemperizacion;
     float agua;
     float resistencia;

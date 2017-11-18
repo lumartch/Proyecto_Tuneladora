@@ -20,11 +20,11 @@
       <x>10</x>
       <y>10</y>
       <width>511</width>
-      <height>548</height>
+      <height>551</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="asientosPerdidasSeccionTab">
      <attribute name="title">
@@ -34,7 +34,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>170</y>
+        <y>180</y>
         <width>121</width>
         <height>16</height>
        </rect>
@@ -47,7 +47,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>190</y>
+        <y>200</y>
         <width>311</width>
         <height>82</height>
        </rect>
@@ -188,7 +188,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>350</y>
+        <y>360</y>
         <width>311</width>
         <height>111</height>
        </rect>
@@ -244,7 +244,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>330</y>
+        <y>340</y>
         <width>131</width>
         <height>16</height>
        </rect>
@@ -266,8 +266,47 @@
        <string>Texto descriptivo</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="desHorPB">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>480</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Historial</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="asVerHistorialPB">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>150</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Historial</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="volAsHistorialPB">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>290</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Historial</string>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="rmrTab">
      <attribute name="title">
       <string>RMR</string>
      </attribute>
@@ -280,7 +319,7 @@
         <height>71</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout">
+      <layout class="QGridLayout" name="condicionGrid">
        <item row="0" column="0">
         <widget class="QLabel" name="condicionL">
          <property name="font">
@@ -370,24 +409,11 @@
      <widget class="QTextEdit" name="rmrTE">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>400</y>
+        <x>50</x>
+        <y>410</y>
         <width>431</width>
         <height>101</height>
        </rect>
-      </property>
-     </widget>
-     <widget class="QDialogButtonBox" name="rmrBB">
-      <property name="geometry">
-       <rect>
-        <x>300</x>
-        <y>370</y>
-        <width>166</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="standardButtons">
-       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
       </property>
      </widget>
      <widget class="QLabel" name="ajusteL">
@@ -412,7 +438,7 @@
         <height>61</height>
        </rect>
       </property>
-      <layout class="QFormLayout" name="formLayout">
+      <layout class="QFormLayout" name="inteperizacionLayout">
        <item row="0" column="0">
         <widget class="QLabel" name="intemperizacionL">
          <property name="text">
@@ -496,7 +522,7 @@
         <height>136</height>
        </rect>
       </property>
-      <layout class="QFormLayout" name="formLayout_2">
+      <layout class="QFormLayout" name="espaciamientoLayout">
        <item row="0" column="0">
         <widget class="QLabel" name="espaciamientoL">
          <property name="text">
@@ -688,7 +714,7 @@
         <height>52</height>
        </rect>
       </property>
-      <layout class="QFormLayout" name="formLayout_3">
+      <layout class="QFormLayout" name="resistenciaLayout">
        <item row="0" column="0">
         <widget class="QLabel" name="resistenciaL">
          <property name="text">
@@ -769,6 +795,32 @@
            <string>&lt; 25</string>
           </property>
          </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>370</y>
+        <width>239</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_4">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="historialPB_2">
+         <property name="text">
+          <string>Historial</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QDialogButtonBox" name="rmrBB">
+         <property name="standardButtons">
+          <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+         </property>
         </widget>
        </item>
       </layout>
@@ -905,7 +957,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Cargar historial</string>
+       <string>Historial</string>
       </property>
      </widget>
      <widget class="QPushButton" name="exportarPB">
