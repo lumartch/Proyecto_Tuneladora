@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Volumen del asiento</string>
   </property>
   <widget class="QLabel" name="informacionLabel">
    <property name="geometry">

@@ -33,9 +33,9 @@ void MainMenuWindow::on_eleccionCB_currentIndexChanged(int index){
         ui->imagenLabel->setScaledContents(true);
 
     }else if(index == 3){
-        ui->descripcionTE->setText("Esta interfaz permitira al usuario calcular la resistencia del frente"
-                                   "en la tuneladora bajo a ciertos parametros y arrojara advertencias y señales"
-                                   "en caso de daños a las aspas o posible derrumbe");
+        ui->descripcionTE->setText("Esta interfaz permitira al usuario calcular la resistencia del frente,"
+                                   "bajo a ciertos parametros y arrojara advertencias"
+                                   "en caso de daños a las aspas o un posible derrumbe.");
         ui->imagenLabel->setPixmap(QPixmap("mantenimientoFrente.png"));
         ui->imagenLabel->setScaledContents(true);
     }else{
