@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="bitacoraTab">
      <attribute name="title">
@@ -312,10 +312,10 @@
      <widget class="QPushButton" name="registroPB">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>330</y>
+        <x>400</x>
+        <y>40</y>
         <width>75</width>
-        <height>27</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="font">
@@ -343,6 +343,19 @@
        </rect>
       </property>
      </widget>
+     <widget class="QPushButton" name="exportarPB">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>330</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Exportar archivo...</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="regresarPB">
@@ -365,7 +378,7 @@
      <x>0</x>
      <y>0</y>
      <width>526</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

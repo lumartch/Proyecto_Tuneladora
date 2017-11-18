@@ -64,6 +64,11 @@
    </column>
    <column>
     <property name="text">
+     <string>Estabilidad</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
      <string>Alerta</string>
     </property>
    </column>
@@ -92,6 +97,19 @@
    </property>
    <property name="text">
     <string>Informacion</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exportarPB">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>430</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Exportar archivo...</string>
    </property>
   </widget>
  </widget>

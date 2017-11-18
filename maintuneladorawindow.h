@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QIcon>
 #include <QFile>
+#include <QFileDialog>
 #include <QDate>
 #include <QMessageBox>
 #include <QTextStream>
@@ -28,6 +29,8 @@ private slots:
     void on_registroCB_currentIndexChanged(int index);
     void on_registroPB_clicked();
     void on_regresarPB_clicked();
+
+    void on_exportarPB_clicked();
 
 private:
     Ui::MainTuneladoraWindow *ui;

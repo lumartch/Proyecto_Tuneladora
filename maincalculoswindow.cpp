@@ -616,3 +616,43 @@ void MainCalculosWindow::on_discontinuidadCB_currentIndexChanged(int index){
         break;
     }
 }
+
+void MainCalculosWindow::on_exportarPB_clicked()
+{
+    QFile bitacoraLectura("RendimientoBitacora.txt");
+    if(!bitacoraLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        bitacoraLectura.close();
+        QMessageBox::information(
+                            this,
+                            tr("Cálculos - Tuneladora"),
+                            tr("No hay datos por exportar.") );
+        return;
+    }
+    QList <QString> listaDeElementos;
+    QTextStream lecturaArchivo(&bitacoraLectura);
+    while(!lecturaArchivo.atEnd()) {
+        listaDeElementos.append(lecturaArchivo.readLine());
+    }
+    bitacoraLectura.close();
+    QString nombreArchivo = QFileDialog::getSaveFileName(this, tr("Guardar archivo"), "", tr(".txt"));
+    if (nombreArchivo.isEmpty()){
+        return;
+    }
+    else {
+        QFile file(nombreArchivo + ".txt");
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::information(this, tr("No se pudo abrir el archivo."),
+                file.errorString());
+            return;
+        }
+        QTextStream out(&file);
+        for(int i = 0; i < listaDeElementos.length(); i++){
+            out << listaDeElementos.at(i) << "\n";
+        }
+        file.close();
+        QMessageBox::information(
+                            this,
+                            tr("Cálculos - Tuneladora"),
+                            tr("Archivo exportado exitosamente.") );
+    }
+}

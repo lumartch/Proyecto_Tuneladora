@@ -391,3 +391,76 @@ void MainTuneladoraWindow::on_registroPB_clicked(){
 void MainTuneladoraWindow::on_regresarPB_clicked(){
     close();
 }
+
+void MainTuneladoraWindow::on_exportarPB_clicked()
+{
+    int index = ui->registroCB->currentIndex();
+    QString nombreSuelo;
+    if(ui->fechaCB->currentIndex() == 0 or index == 0){
+        QMessageBox::information(
+                            this,
+                            tr("Administracion de datos - Tuneladora"),
+                            tr("Seleccione primero un material y una fecha para exportar.") );
+    }
+    switch (index) {
+    case 1:
+        nombreSuelo ="Arena-Rio";
+        break;
+    case 2:
+        nombreSuelo ="Arena-Amarilla";
+        break;
+    case 3:
+        nombreSuelo ="Tepetate-Rosa";
+        break;
+    case 4:
+        nombreSuelo ="Tepetate-Blanco";
+        break;
+    case 5:
+        nombreSuelo ="Jal-Grueso";
+        break;
+    case 6:
+        nombreSuelo ="Jal-Mediano";
+        break;
+    case 7:
+        nombreSuelo ="Jal-Fino";
+        break;
+    case 8:
+        nombreSuelo ="Arcilla-Negra";
+        break;
+    }
+    QString fecha = nombreSuelo + "_" + ui->fechaCB->currentText()  + ".txt";
+    QFile bitacoraLectura(fecha);
+    if(!bitacoraLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        ui->registroTW->setRowCount(0);
+        qDebug() << "No hay archivo para lectura Bitacora.txt...";
+        bitacoraLectura.close();
+        return;
+    }
+    QList <QString> listaDeElementos;
+    QTextStream lecturaArchivo(&bitacoraLectura);
+    while(!lecturaArchivo.atEnd()) {
+        listaDeElementos.append(lecturaArchivo.readLine());
+    }
+    bitacoraLectura.close();
+    QString nombreArchivo = QFileDialog::getSaveFileName(this, tr("Guardar archivo"), "", tr(".txt"));
+    if (nombreArchivo.isEmpty()){
+        return;
+    }
+    else {
+        QFile file(nombreArchivo + ".txt");
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::information(this, tr("No se pudo abrir el archivo."),
+                file.errorString());
+            return;
+        }
+        QTextStream out(&file);
+        for(int i = 0; i < listaDeElementos.length(); i++){
+            out << listaDeElementos.at(i) << "\n";
+        }
+        file.close();
+        QMessageBox::information(
+                            this,
+                            tr("Administracion de datos - Tuneladora"),
+                            tr("Archivo exportado exitosamente.") );
+    }
+}

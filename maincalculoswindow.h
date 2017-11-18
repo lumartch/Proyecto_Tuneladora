@@ -7,6 +7,7 @@
 #include <qdebug.h>
 #include <math.h>
 #include <QFile>
+#include <QFileDialog>
 #include <QDate>
 #include <QTextStream>
 
@@ -47,10 +48,9 @@ private slots:
     void on_aguaCB_currentIndexChanged(int index);
     void on_rmrBB_accepted();
     void on_rmrBB_rejected();
-
     void on_historialPB_clicked();
-
     void on_discontinuidadCB_currentIndexChanged(int index);
+    void on_exportarPB_clicked();
 
 private:
     Ui::MainCalculosWindow *ui;

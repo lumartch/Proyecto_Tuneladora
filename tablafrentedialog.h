@@ -9,6 +9,7 @@
 #include <QTime>
 #include <QDate>
 #include <qdebug.h>
+#include <QFileDialog>
 
 namespace Ui {
 class TablaFrenteDialog;
@@ -24,6 +25,8 @@ public:
 
 private slots:
     void on_regresarPB_clicked();
+
+    void on_exportarPB_clicked();
 
 private:
     Ui::TablaFrenteDialog *ui;
