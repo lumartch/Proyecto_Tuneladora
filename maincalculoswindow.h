@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QIcon>
 #include <qdebug.h>
 #include <math.h>
 #include <QFile>

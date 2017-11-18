@@ -28,16 +28,19 @@ SOURCES += \
         maintuneladorawindow.cpp \
     maincalculoswindow.cpp \
     mainmenuwindow.cpp \
-    mainondaswindow.cpp
+    mainondaswindow.cpp \
+    tablafrentedialog.cpp
 
 HEADERS += \
         maintuneladorawindow.h \
     maincalculoswindow.h \
     mainmenuwindow.h \
-    mainondaswindow.h
+    mainondaswindow.h \
+    tablafrentedialog.h
 
 FORMS += \
         maintuneladorawindow.ui \
     maincalculoswindow.ui \
     mainmenuwindow.ui \
-    mainondaswindow.ui
+    mainondaswindow.ui \
+    tablafrentedialog.ui

@@ -2,6 +2,7 @@
 #define MAINTUNELADORAWINDOW_H
 
 #include <QMainWindow>
+#include <QIcon>
 #include <QFile>
 #include <QDate>
 #include <QMessageBox>

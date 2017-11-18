@@ -5,6 +5,9 @@ MainTuneladoraWindow::MainTuneladoraWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainTuneladoraWindow){
     ui->setupUi(this);
+    //Inicializacion de parametros de la interfaz e icono
+    this->setFixedSize(this->size());
+    setWindowIcon(QIcon("icon.png"));
     enableButtonBitacora();
 }
 

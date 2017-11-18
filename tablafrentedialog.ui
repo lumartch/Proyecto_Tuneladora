@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TablaFrenteDialog</class>
+ <widget class="QDialog" name="TablaFrenteDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>910</width>
+    <height>498</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QTableWidget" name="historialTW">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>881</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>Fecha</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Hora</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>PSS</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>PIT</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>DAT</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>CCT</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>DT</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>RCD</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Alerta</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="regresarPB">
+   <property name="geometry">
+    <rect>
+     <x>804</x>
+     <y>430</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Regresar...</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="informacionLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>370</y>
+     <width>281</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Informacion</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

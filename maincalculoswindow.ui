@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Cálculos - Tuneladora</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="calculosTabWidget">
@@ -866,6 +866,9 @@
         <height>241</height>
        </rect>
       </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>89</number>
+      </attribute>
       <column>
        <property name="text">
         <string>Fecha</string>
@@ -927,7 +930,7 @@
      <x>0</x>
      <y>0</y>
      <width>543</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

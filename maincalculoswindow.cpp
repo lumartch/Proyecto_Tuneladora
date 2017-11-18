@@ -5,6 +5,9 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainCalculosWindow){
     ui->setupUi(this);
+    //Inicializacion de parametros de la interfaz e icono
+    this->setFixedSize(this->size());
+    setWindowIcon(QIcon("icon.png"));
     ui->rmrTE->hide();
     intemperizacion = 6;
     persistencia = 6;
@@ -21,7 +24,7 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     habilitarVolumenCubeta();
     habilitarDesplazamientoHorizontal();
     //Integración de validadores, para solo recibir numeros
-    QRegExp rx("^[-+]?[0-9]*\.?[0-9]+$ or ^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$");
+    QRegExp rx("[+-]?([0-9]*[.])?[0-9]+");
     QValidator *validadorNumeros = new QRegExpValidator(rx);
     ui->horasRealesLE->setValidator(validadorNumeros);
     ui->horasEfectivasLE->setValidator(validadorNumeros);
@@ -91,7 +94,7 @@ void MainCalculosWindow::on_CuButtonBox_accepted(){
     if(cu > 0.5){
         QMessageBox::information(
                             this,
-                            tr("Administracion de datos - Calculos"),
+                            tr("Cálculos - Tuneladora"),
                             tr("Este dato es imposible.\n"
                                "El coeficiente de utilizacion\n"
                                "nunca supera el 50%.") );
@@ -101,7 +104,7 @@ void MainCalculosWindow::on_CuButtonBox_accepted(){
     else if(cu >= 0.46 and cu <= 0.5){
         QMessageBox::information(
                             this,
-                            tr("Administracion de datos - Calculos"),
+                            tr("Cálculos - Tuneladora"),
                             tr("Condiciones de trabajo óptimas.\n"
                                "Roca de dureza media.\n"
                                "Equipos de apoyo optimos\n"
@@ -110,7 +113,7 @@ void MainCalculosWindow::on_CuButtonBox_accepted(){
     else if(cu >= 0.42 and cu < 0.46){
         QMessageBox::information(
                             this,
-                            tr("Administracion de datos - Calculos"),
+                            tr("Cálculos - Tuneladora"),
                             tr("Condiciones de trabajo buenas.\n"
                                "Roca de dureza media.\n"
                                "Sin sostenimiento.") );
@@ -118,7 +121,7 @@ void MainCalculosWindow::on_CuButtonBox_accepted(){
     else if(cu >= 0.34 and cu < 0.42){
         QMessageBox::information(
                             this,
-                            tr("Administracion de datos - Calculos"),
+                            tr("Cálculos - Tuneladora"),
                             tr("Condiciones de trabajo normales.\n"
                                "Roca dura.\n"
                                "Sostenimiento muy ligero.\n"
@@ -127,7 +130,7 @@ void MainCalculosWindow::on_CuButtonBox_accepted(){
     else if(cu >= 0.20 and cu < 0.34){
         QMessageBox::information(
                             this,
-                            tr("Administracion de datos - Calculos"),
+                            tr("Cálculos - Tuneladora"),
                             tr("Condiciones de trabajo duras.\n"
                                "Roca muy dura y abrasiva.\n"
                                "Sostenimiento ligero.\n"
@@ -136,7 +139,7 @@ void MainCalculosWindow::on_CuButtonBox_accepted(){
     else if(cu >= 0 and cu < 0.20){
         QMessageBox::information(
                             this,
-                            tr("Administracion de datos - Calculos"),
+                            tr("Cálculos - Tuneladora"),
                             tr("Condiciones de trabajo muy duras.\n"
                                "Roca extremadamente dura y abrasiva.\n"
                                "Sostenimiento considerable\n"
@@ -146,7 +149,7 @@ void MainCalculosWindow::on_CuButtonBox_accepted(){
     guardadoRendimiento();
     QMessageBox::information(
                         this,
-                        tr("Administracion de datos - Calculos"),
+                        tr("Cálculos - Tuneladora"),
                         tr("Información guardada en bitacora.") );
 }
 
@@ -198,7 +201,7 @@ void MainCalculosWindow::guardadoRendimiento(){
     QFile bitacoraRendimiento("RendimientoBitacora.txt");
     QString auxStr;
     if(!bitacoraRendimiento.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "No hay archivo para lectura RendimientoBitacora.txt...";
+        //qDebug() << "No hay archivo para lectura RendimientoBitacora.txt...";
         bitacoraRendimiento.close();
     }else{
         QTextStream lecturaSuelo(&bitacoraRendimiento);
@@ -237,7 +240,12 @@ void MainCalculosWindow::on_historialPB_clicked(){
     QFile bitacoraLectura("RendimientoBitacora.txt");
     if(!bitacoraLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
         ui->historialTW->setRowCount(0);
-        qDebug() << "No hay archivo para lectura RendimientoBitacora.txt...";
+        QMessageBox::information(
+                        this,
+                        tr("Cálculos - Tuneladora"),
+                        tr("No hay archivo para lectura RendimientoBitacora.txt...") );
+
+        //qDebug() << "No hay archivo para lectura RendimientoBitacora.txt...";
         bitacoraLectura.close();
         return;
     }

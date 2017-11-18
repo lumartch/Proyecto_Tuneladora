@@ -5,6 +5,9 @@ MainMenuWindow::MainMenuWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainMenuWindow){
     ui->setupUi(this);
+    //Inicializacion de parametros de la interfaz e icono
+    this->setFixedSize(this->size());
+    setWindowIcon(QIcon("icon.png"));
     ui->descripcionTE->setEnabled(false);
     ui->descripcionTE->setText("Bienvenido al asistente de datos de la tuneladora.");
     ui->imagenLabel->hide();

@@ -6,36 +6,36 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>608</width>
-    <height>505</height>
+    <width>476</width>
+    <height>471</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Mantenimiento del frente - Tuneladora</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="frenteTB">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>581</width>
-      <height>431</height>
+      <x>10</x>
+      <y>10</y>
+      <width>441</width>
+      <height>361</height>
      </rect>
     </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="calculosTab">
      <attribute name="title">
-      <string>Calculo de resistencia del frente.</string>
+      <string>Calculo de resistencia del frente</string>
      </attribute>
      <widget class="QLineEdit" name="sobrecargaLE">
       <property name="geometry">
        <rect>
         <x>240</x>
         <y>30</y>
-        <width>113</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -45,7 +45,7 @@
        <rect>
         <x>240</x>
         <y>70</y>
-        <width>113</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -55,7 +55,7 @@
        <rect>
         <x>240</x>
         <y>110</y>
-        <width>113</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -65,7 +65,7 @@
        <rect>
         <x>240</x>
         <y>150</y>
-        <width>113</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -75,7 +75,7 @@
        <rect>
         <x>240</x>
         <y>190</y>
-        <width>113</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -85,7 +85,7 @@
        <rect>
         <x>240</x>
         <y>230</y>
-        <width>113</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -181,34 +181,32 @@
        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
       </property>
      </widget>
-     <widget class="QTextEdit" name="estabilidadTE">
+     <widget class="QPushButton" name="historialPB">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>310</y>
-        <width>391</width>
-        <height>70</height>
+        <y>280</y>
+        <width>75</width>
+        <height>23</height>
        </rect>
       </property>
+      <property name="text">
+       <string>Historial</string>
+      </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Registro</string>
-     </attribute>
     </widget>
    </widget>
    <widget class="QPushButton" name="frentePB">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>440</y>
-      <width>221</width>
-      <height>21</height>
+      <x>320</x>
+      <y>390</y>
+      <width>121</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Regresar al menu principal</string>
+     <string>Regresar al inicio...</string>
     </property>
    </widget>
   </widget>
@@ -217,8 +215,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>608</width>
-     <height>20</height>
+     <width>476</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

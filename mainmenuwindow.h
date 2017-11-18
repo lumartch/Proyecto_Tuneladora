@@ -2,10 +2,11 @@
 #define MAINMENUWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QIcon>
 #include "maintuneladorawindow.h"
 #include "maincalculoswindow.h"
 #include "mainondaswindow.h"
-#include <QMessageBox>
 
 namespace Ui {
 class MainMenuWindow;

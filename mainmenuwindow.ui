@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Adrministración - Tuneladora</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Documentacion/Icono-Programa.PNG</normaloff>../Documentacion/Icono-Programa.PNG</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QComboBox" name="eleccionCB">
     <property name="geometry">
@@ -40,7 +44,7 @@
     </item>
     <item>
      <property name="text">
-      <string>Mantenimiento del Frente</string>
+      <string>Mantenimiento del frente</string>
      </property>
     </item>
    </widget>
@@ -113,7 +117,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>494</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
