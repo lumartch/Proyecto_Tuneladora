@@ -17,6 +17,12 @@ public:
 private slots:
     void on_frentePB_clicked();
 
+    void on_frenteBB_accepted();
+
+    void on_frenteBB_rejected();
+
+    void cleanFrente();
+
 private:
     Ui::MainOndasWindow *ui;
 };

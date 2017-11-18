@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>608</width>
-    <height>577</height>
+    <height>505</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>0</x>
       <y>0</y>
       <width>581</width>
-      <height>491</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -30,148 +30,148 @@
      <attribute name="title">
       <string>Calculo de resistencia del frente.</string>
      </attribute>
-     <widget class="QLineEdit" name="oneLE">
+     <widget class="QLineEdit" name="sobrecargaLE">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>80</y>
+        <x>240</x>
+        <y>30</y>
         <width>113</width>
         <height>21</height>
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="twoLE">
+     <widget class="QLineEdit" name="interiorLE">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>240</x>
+        <y>70</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="densidadLE">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
         <y>110</y>
         <width>113</width>
         <height>21</height>
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="threeLE">
+     <widget class="QLineEdit" name="coberturaLE">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>140</y>
+        <x>240</x>
+        <y>150</y>
         <width>113</width>
         <height>21</height>
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="fourLE">
+     <widget class="QLineEdit" name="diametroLE">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>170</y>
+        <x>240</x>
+        <y>190</y>
         <width>113</width>
         <height>21</height>
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="fiveLE">
+     <widget class="QLineEdit" name="resistenciaLE">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>200</y>
-        <width>113</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="sixLE">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
+        <x>240</x>
         <y>230</y>
         <width>113</width>
         <height>21</height>
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="sobrecargaL">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>80</y>
-        <width>101</width>
+        <x>20</x>
+        <y>30</y>
+        <width>211</width>
         <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>Dame el empuje</string>
+       <string>Presión de sobrecarga en superficie (kPa) </string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="interiorL">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>110</y>
-        <width>91</width>
-        <height>20</height>
+        <x>20</x>
+        <y>60</y>
+        <width>201</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
-       <string>Dame el radio</string>
+       <string>Presión interior del túnel (kPa) </string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="densidadL">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>140</y>
-        <width>101</width>
-        <height>20</height>
+        <x>20</x>
+        <y>90</y>
+        <width>231</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="text">
-       <string>Dame el espersor</string>
+       <string>Densidad aparente del terreno (KN/m3) </string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="coberturaL">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>170</y>
-        <width>101</width>
-        <height>20</height>
+        <x>20</x>
+        <y>130</y>
+        <width>181</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="text">
-       <string>Dame la contraccion</string>
+       <string>Cobertura hasta clave del túnel (m) </string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="diametroL">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>200</y>
-        <width>81</width>
-        <height>20</height>
+        <x>20</x>
+        <y>160</y>
+        <width>151</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="text">
-       <string>Dame la fuerza</string>
+       <string>Diámetro del túnel (m)</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="resistenciaL">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>230</y>
-        <width>91</width>
-        <height>20</height>
+        <x>20</x>
+        <y>190</y>
+        <width>191</width>
+        <height>101</height>
        </rect>
       </property>
       <property name="text">
-       <string>Dame la vertical</string>
+       <string>Resistencia al corte sin drenaje (kPa) </string>
       </property>
      </widget>
      <widget class="QDialogButtonBox" name="frenteBB">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>240</x>
         <y>280</y>
         <width>166</width>
         <height>21</height>
@@ -179,6 +179,16 @@
       </property>
       <property name="standardButtons">
        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="estabilidadTE">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>310</y>
+        <width>391</width>
+        <height>70</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -192,7 +202,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>510</y>
+      <y>440</y>
       <width>221</width>
       <height>21</height>
      </rect>

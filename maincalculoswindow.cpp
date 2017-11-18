@@ -36,8 +36,6 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     ui->horasEfectivasLE->setPlaceholderText("m/hr");
     ui->CULineEdit->setDisabled(true);
     //Constructor de las ondas P
-    ui->ondasSLE->setPlaceholderText("m/s");
-    ui->ondasPLE->setPlaceholderText("m/s");
     //Constructor del calculo del asiento vertical
     ui->informacionLabel->setText("Smáx:Asiento vertical\n"
                                   "máximo en el eje (mm).\n\n"
@@ -329,14 +327,6 @@ void MainCalculosWindow::on_distanciaHorLE_textChanged(const QString &arg1){
 void MainCalculosWindow::on_asientoVerDesLE_textChanged(const QString &arg1){
     Q_UNUSED(arg1);
     habilitarDesplazamientoHorizontal();
-}
-
-
-void MainCalculosWindow::on_piedraBB_rejected(){
-    ui->ondasPLE->setText("");
-    ui->ondasSLE->setText("");
-    ui->tipoPiedraTE->setText("");
-    ui->tipoPiedraTE->hide();
 }
 
 void MainCalculosWindow::on_resistenciaCB_currentIndexChanged(int index){
