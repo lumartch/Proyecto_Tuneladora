@@ -23,8 +23,21 @@ private slots:
 
     void cleanFrente();
 
+    void on_sobrecargaLE_textChanged(const QString &arg1);
+
+    void on_interiorLE_textChanged(const QString &arg1);
+
+    void on_densidadLE_textChanged(const QString &arg1);
+
+    void on_coberturaLE_textChanged(const QString &arg1);
+
+    void on_diametroLE_textChanged(const QString &arg1);
+
+    void on_resistenciaLE_textChanged(const QString &arg1);
+
 private:
     Ui::MainOndasWindow *ui;
+    void habilitarFrente();
 };
 
 #endif // MAINONDASWINDOW_H

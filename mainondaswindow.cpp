@@ -5,6 +5,7 @@ MainOndasWindow::MainOndasWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainOndasWindow){
     ui->setupUi(this);
+    habilitarFrente();
 }
 
 MainOndasWindow::~MainOndasWindow(){
@@ -50,4 +51,42 @@ void MainOndasWindow::on_frenteBB_rejected(){
     cleanFrente();
     ui->estabilidadTE->setText("");
     ui->estabilidadTE->hide();
+}
+
+void MainOndasWindow::habilitarFrente(){
+    if(ui->densidadLE->text() > 0 && ui->coberturaLE->text() > 0 && ui->diametroLE->text() > 0 && ui->interiorLE->text() > 0 && ui->sobrecargaLE->text() > 0 && ui->resistenciaLE->text() > 0 ){
+        ui->frenteBB->button(QDialogButtonBox::Ok)->setEnabled(true);
+    }else{
+        ui->frenteBB->button(QDialogButtonBox::Ok)->setEnabled(false);
+    }
+}
+
+void MainOndasWindow::on_sobrecargaLE_textChanged(const QString &arg1){
+    Q_UNUSED(arg1);
+    habilitarFrente();
+}
+
+void MainOndasWindow::on_interiorLE_textChanged(const QString &arg1){
+    Q_UNUSED(arg1);
+    habilitarFrente();
+}
+
+void MainOndasWindow::on_densidadLE_textChanged(const QString &arg1){
+    Q_UNUSED(arg1);
+    habilitarFrente();
+}
+
+void MainOndasWindow::on_coberturaLE_textChanged(const QString &arg1){
+    Q_UNUSED(arg1);
+    habilitarFrente();
+}
+
+void MainOndasWindow::on_diametroLE_textChanged(const QString &arg1){
+    Q_UNUSED(arg1);
+    habilitarFrente();
+}
+
+void MainOndasWindow::on_resistenciaLE_textChanged(const QString &arg1){
+    Q_UNUSED(arg1);
+    habilitarFrente();
 }
