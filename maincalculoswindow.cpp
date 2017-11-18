@@ -5,7 +5,6 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainCalculosWindow){
     ui->setupUi(this);
-    ui->tipoPiedraTE->hide();
     ui->rmrTE->hide();
     intemperizacion = 6;
     persistencia = 6;
@@ -32,8 +31,6 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     ui->profundidadLE->setValidator(validadorNumeros);
     ui->distanciaHorLE->setValidator(validadorNumeros);
     ui->asientoVerDesLE->setValidator(validadorNumeros);
-    ui->ondasSLE->setValidator(validadorNumeros);
-    ui->ondasPLE->setValidator(validadorNumeros);
     //Constructor del calculo del rendimiento
     ui->horasRealesLE->setPlaceholderText("m/hr");
     ui->horasEfectivasLE->setPlaceholderText("m/hr");
@@ -84,60 +81,6 @@ MainCalculosWindow::~MainCalculosWindow(){
 
 void MainCalculosWindow::on_pushButton_clicked(){
     close();
-}
-
-void MainCalculosWindow::on_piedraBB_accepted(){
-    //Revisar, no sirve NINGUN IF, sugerencia .toInt() o .toFloat()
-    int ondasP = ui->ondasPLE->text().toInt();
-    int ondasS = ui->ondasSLE->text().toInt();
-    ui->tipoPiedraTE->show();
-    if(ondasP > 4500 and ondasP < 7500 and ondasS > 3500 and ondasS < 4000 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se está trabajando son Rocas Inglesas");
-    }else if(ondasP > 1400 && ondasP < 1800 && ondasS > 50 &&ondasS < 100 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es cieno");
-    }else if(ondasP > 300 && ondasP < 1400 && ondasS > 100 && ondasS < 500 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es (Sedimentos no consolidados)");
-    }else if(ondasP > 1800 && ondasP < 2500 && ondasS > 100 && ondasS < 500 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es (Sedimentos no consolidados)");
-    }else if(ondasP > 1400 && ondasP < 1800 && ondasS > 100 && ondasS < 300 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es cieno ó (Sedimentos no consolidados )");
-    }else if(ondasP > 3000 && ondasP < 3500 && ondasS > 2000 && ondasS < 3000 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Limos");
-    }else if(ondasP > 1500 && ondasP < 5400 && ondasS > 800 && ondasS < 1500 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es (Arenas compactas)");
-    }else if(ondasP > 3500 && ondasP < 5400 && ondasS > 1500 && ondasS < 2000 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Rocas sedimentarias ó (Arenas compactas)");
-    }else if(ondasP > 5400 && ondasP < 5500 && ondasS > 1500 && ondasS < 2000 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Rocas sedimentarias");
-    }else if(ondasP > 4500 && ondasP < 6000 && ondasS > 3000 && ondasS < 3500 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Rocas metamórficas");
-    }else if(ondasP > 4500 && ondasP < 5500 && ondasS > 2500 && ondasS < 3000 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Limos ó Rocas sedimentarias ó Rocas Metamórficas");
-    }else if(ondasP > 3000 && ondasP < 6000 && ondasS > 2000 && ondasS < 2500 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Rocas sedimentarias o Limos");
-    }else if(ondasP > 5500 && ondasP < 6000 && ondasS > 2000 && ondasS < 2500 ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Limos");
-    }else if(ondasP == 1500  && ondasS > 0  ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es agua");
-    }else if(ondasP == 5200  && ondasS > 3000  ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es granito");
-    }else if(ondasP == 6400  && ondasS > 3200  ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es basalto");
-    }else if(ondasP == 2400  && ondasS > 1350  ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es calizas");
-    }else if(ondasP == 3500  && ondasS > 2150  ){
-        ui->tipoPiedraTE->setText("Por las Ondas P y las Ondas S registradas el material con el que se esta trabajando es Areniscas");
-    }else if(ondasP < 250){
-        ui->tipoPiedraTE->setText("No hay registro de ondas P tan bajas para ningún material");
-    }else if(ondasP > 7500){
-        ui->tipoPiedraTE->setText("No hay registro de ondas P tan altas para ningún material");
-    }else if(ondasS > 4000){
-        ui->tipoPiedraTE->setText("No hay registro de ondas S tan altas para ningún material");
-    }else if(ondasP < 50){
-        ui->tipoPiedraTE->setText("No hay registro de ondas S tan bajas para ningún material");
-    }else{
-        ui->tipoPiedraTE->setText("No hay registro de ondas P u ondas S para ningún material con esos parametros");
-    }
 }
 
 void MainCalculosWindow::on_CuButtonBox_accepted(){
@@ -247,8 +190,7 @@ void MainCalculosWindow::habilitarDesplazamientoHorizontal(){
     }
 }
 
-void MainCalculosWindow::guardadoRendimiento()
-{
+void MainCalculosWindow::guardadoRendimiento(){
     //Bitacora del rendimiento
     float horasReales = ui->horasRealesLE->text().toFloat();
     float horasEfectivas = ui->horasEfectivasLE->text().toFloat();
@@ -260,8 +202,7 @@ void MainCalculosWindow::guardadoRendimiento()
     if(!bitacoraRendimiento.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "No hay archivo para lectura RendimientoBitacora.txt...";
         bitacoraRendimiento.close();
-    }
-    else{
+    }else{
         QTextStream lecturaSuelo(&bitacoraRendimiento);
         while(!lecturaSuelo.atEnd()) {
             auxStr += lecturaSuelo.readLine() + "\n";
@@ -276,8 +217,7 @@ void MainCalculosWindow::guardadoRendimiento()
     if(!bitRendActualizada.open(QIODevice::WriteOnly | QIODevice::Text)){
         bitRendActualizada.close();
         return;
-    }
-    else{
+    }else{
         QTextStream salida(&bitRendActualizada);
         QString fechaStr = QString::number(tiempoLocal.day()) + "/"
                 + QString::number(tiempoLocal.month()) + "/" + QString::number(tiempoLocal.year());
@@ -294,8 +234,7 @@ void MainCalculosWindow::guardadoRendimiento()
 
 }
 
-void MainCalculosWindow::on_historialPB_clicked()
-{
+void MainCalculosWindow::on_historialPB_clicked(){
     //Lee los datos que contiene la bitacora de rendimiento
     QFile bitacoraLectura("RendimientoBitacora.txt");
     if(!bitacoraLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -659,8 +598,6 @@ void MainCalculosWindow::on_rmrBB_rejected(){
     ui->rmrTE->setText("");
     ui->rmrTE->hide();
 }
-
-
 
 void MainCalculosWindow::on_discontinuidadCB_currentIndexChanged(int index){
     switch(index){

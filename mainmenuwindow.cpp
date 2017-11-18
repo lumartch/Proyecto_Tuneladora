@@ -3,8 +3,7 @@
 
 MainMenuWindow::MainMenuWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainMenuWindow)
-{
+    ui(new Ui::MainMenuWindow){
     ui->setupUi(this);
     ui->descripcionTE->setEnabled(false);
     ui->descripcionTE->setText("Bienvenido al asistente de datos de la tuneladora.");
@@ -26,6 +25,10 @@ void MainMenuWindow::on_eleccionCB_currentIndexChanged(int index){
                                    "bajo ciertas circunstancias la interfaz arrojara señales de aviso por si la tuneladora"
                                    "esta presentando un uso inadecuado o falta de mantenimiento....");
         ui->imagenLabel->show();
+    }else if(index == 3){
+        ui->descripcionTE->setText("Esta interfaz permitira al usuario calcular la resistencia del frente"
+                                   "en la tuneladora bajo a ciertos parametros y arrojara advertencias y señales"
+                                   "en caso de daños a las aspas o posible derrumbe");
     }else{
         ui->descripcionTE->setText("Bienvenido al asistente de datos de la tuneladora.");
     }
@@ -47,11 +50,17 @@ void MainMenuWindow::on_aceptarPb_clicked(){
         ui->label->hide();
         ui->imagenLabel->hide();
         ui->eleccionCB->setCurrentIndex(0);
+    }else if(ui->eleccionCB->currentIndex() == 3){
+        ventanaFrente = new MainOndasWindow;
+        ventanaFrente->show();
+        ui->label->hide();
+        ui->imagenLabel->hide();
+        ui->eleccionCB->setCurrentIndex(0);
     }else{
         QMessageBox::information(
                         this,
                         tr("Administracion de datos - Tuneladora"),
-                        tr("El administrador de datos solo puede mostrar la opcion Bitacora y calculos, intente de nuevo.") );
+                        tr("El administrador de datos solo puede mostrar la opcion Bitacora, Calculos y Resistencia del frente, intente de nuevo.") );
     }
     ui->eleccionCB->setCurrentIndex(0);
     ui->descripcionTE->setText("Bienvenido al asistente de datos de la tuneladora.");

@@ -38,6 +38,11 @@
       <string>Calculos</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Mantenimiento del Frente</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLabel" name="imagenLabel">
     <property name="geometry">

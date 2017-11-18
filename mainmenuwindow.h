@@ -4,14 +4,14 @@
 #include <QMainWindow>
 #include "maintuneladorawindow.h"
 #include "maincalculoswindow.h"
+#include "mainondaswindow.h"
 #include <QMessageBox>
 
 namespace Ui {
 class MainMenuWindow;
 }
 
-class MainMenuWindow : public QMainWindow
-{
+class MainMenuWindow : public QMainWindow{
     Q_OBJECT
 
 public:
@@ -26,6 +26,7 @@ private:
     Ui::MainMenuWindow *ui;
     MainCalculosWindow *ventanaCalculos;
     MainTuneladoraWindow *ventanaBitacora;
+    MainOndasWindow *ventanaFrente;
 };
 
 #endif // MAINMENUWINDOW_H

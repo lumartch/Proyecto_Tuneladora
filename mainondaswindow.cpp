@@ -10,3 +10,7 @@ MainOndasWindow::MainOndasWindow(QWidget *parent) :
 MainOndasWindow::~MainOndasWindow(){
     delete ui;
 }
+
+void MainOndasWindow::on_frentePB_clicked(){
+    close();
+}

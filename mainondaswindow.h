@@ -14,6 +14,9 @@ public:
     explicit MainOndasWindow(QWidget *parent = 0);
     ~MainOndasWindow();
 
+private slots:
+    void on_frentePB_clicked();
+
 private:
     Ui::MainOndasWindow *ui;
 };

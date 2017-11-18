@@ -28,16 +28,14 @@ void MainTuneladoraWindow::cleanBitacora(){
     camposEnable();
 }
 
-void MainTuneladoraWindow::camposEnable()
-{
+void MainTuneladoraWindow::camposEnable(){
     //Permite la escritura a los campos
     ui->PVSSDSP->setEnabled(true);
     ui->PVSCDSP->setEnabled(true);
     ui->PVMDSP->setEnabled(true);
 }
 
-void MainTuneladoraWindow::guardarBitacora(const QString &suelo)
-{
+void MainTuneladoraWindow::guardarBitacora(const QString &suelo){
     //Da el nombre al archivo
     QDate fechaLocal = QDate::currentDate();
     QString archivo = suelo + "_" + QString::number(fechaLocal.day()) + "_" +
@@ -82,8 +80,7 @@ void MainTuneladoraWindow::guardarBitacora(const QString &suelo)
     if(!bitacoraSueloLectura.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "No hay archivo para lectura " << archivo << "...";
         bitacoraSueloLectura.close();
-    }
-    else{
+    }else{
         QTextStream lecturaSuelo(&bitacoraSueloLectura);
         while(!lecturaSuelo.atEnd()) {
             auxStr += lecturaSuelo.readLine() + "\n";
@@ -97,8 +94,7 @@ void MainTuneladoraWindow::guardarBitacora(const QString &suelo)
     if(!bitacoraSuelo.open(QIODevice::WriteOnly | QIODevice::Text)){
         bitacoraSuelo.close();
         return;
-    }
-    else{
+    }else{
         QTextStream salida(&bitacoraSuelo);
         QString horaStr = '[' + QString::number(horaLocal.hour()) + ':' + QString::number(horaLocal.minute()) + ']';
         salida << auxStr;
@@ -110,8 +106,7 @@ void MainTuneladoraWindow::guardarBitacora(const QString &suelo)
     }
 }
 
-void MainTuneladoraWindow::cargarBitacora(const QString &nomSuelo)
-{
+void MainTuneladoraWindow::cargarBitacora(const QString &nomSuelo){
     //Lee todos los archivos disponibles para un tipo de suelo
     QString auxiliar;
     QRegularExpression rx(nomSuelo);
@@ -136,8 +131,7 @@ void MainTuneladoraWindow::cargarBitacora(const QString &nomSuelo)
     bitacoraLectura.close();
 }
 
-void MainTuneladoraWindow::rellenarTabla(const QString &nombreSuelo)
-{
+void MainTuneladoraWindow::rellenarTabla(const QString &nombreSuelo){
     //Lee los datos de los documentos y los implementa dentro del Table widget
     QString fecha = nombreSuelo + "_" + ui->fechaCB->currentText()  + ".txt";
     QFile bitacoraLectura(fecha);
@@ -313,20 +307,16 @@ void MainTuneladoraWindow::on_bitacoraBB_rejected(){
     cleanBitacora();
 }
 
-void MainTuneladoraWindow::enableButtonBitacora()
-{
+void MainTuneladoraWindow::enableButtonBitacora(){
     //Activa el boton de aceptar de la bitacora
     if(ui->bitacoraCB->currentIndex() > 0){
         ui->bitacoraBB->button(QDialogButtonBox::Ok)->setEnabled(true);
-    }
-    else
-    {
+    } else{
         ui->bitacoraBB->button(QDialogButtonBox::Ok)->setEnabled(false);
     }
 }
 
-void MainTuneladoraWindow::on_registroCB_currentIndexChanged(int index)
-{
+void MainTuneladoraWindow::on_registroCB_currentIndexChanged(int index){
     //Lanza la busquedas de archivos que vienen registrados en el archivo master
     ui->fechaCB->clear();
     ui->fechaCB->addItem("Fecha...");
@@ -357,8 +347,7 @@ void MainTuneladoraWindow::on_registroCB_currentIndexChanged(int index)
         break;
     }
 }
-void MainTuneladoraWindow::on_registroPB_clicked()
-{
+void MainTuneladoraWindow::on_registroPB_clicked(){
     //Toma el tipo de suelo y la fecha de la bitacora a cargar
     int index = ui->registroCB->currentIndex();
     if(ui->fechaCB->currentIndex() == 0 or index == 0){
@@ -396,7 +385,6 @@ void MainTuneladoraWindow::on_registroPB_clicked()
     }
 }
 
-void MainTuneladoraWindow::on_regresarPB_clicked()
-{
+void MainTuneladoraWindow::on_regresarPB_clicked(){
     close();
 }
