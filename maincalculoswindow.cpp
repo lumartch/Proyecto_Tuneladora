@@ -23,6 +23,7 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     habilitarAsientoVerticalPB();
     habilitarVolumenCubeta();
     habilitarDesplazamientoHorizontal();
+    habilitarRendimiento();
     //Integración de validadores, para solo recibir numeros
     QRegExp rx("[+-]?([0-9]*[.])?[0-9]+");
     QValidator *validadorNumeros = new QRegExpValidator(rx);
@@ -188,6 +189,16 @@ void MainCalculosWindow::habilitarDesplazamientoHorizontal(){
         ui->desplazamientoPB->setEnabled(true);
     }else{
         ui->desplazamientoPB->setDisabled(true);
+    }
+}
+
+void MainCalculosWindow::habilitarRendimiento()
+{
+    //Disable del boton para el calculo del rendimiento
+    if(ui->horasRealesLE->text() > 0 and ui->horasEfectivasLE->text() > 0){
+        ui->CuButtonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
+    }else{
+        ui->CuButtonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
     }
 }
 
@@ -875,4 +886,16 @@ void MainCalculosWindow::on_historialPB_2_clicked()
 {
     RMRDialog *ventana = new RMRDialog;
     ventana->show();
+}
+
+void MainCalculosWindow::on_horasRealesLE_textChanged(const QString &arg1)
+{
+    Q_UNUSED(arg1);
+    habilitarRendimiento();
+}
+
+void MainCalculosWindow::on_horasEfectivasLE_textChanged(const QString &arg1)
+{
+    Q_UNUSED(arg1);
+    habilitarRendimiento();
 }

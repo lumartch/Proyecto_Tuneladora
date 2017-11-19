@@ -64,6 +64,10 @@ private slots:
 
     void on_historialPB_2_clicked();
 
+    void on_horasRealesLE_textChanged(const QString &arg1);
+
+    void on_horasEfectivasLE_textChanged(const QString &arg1);
+
 private:
     Ui::MainCalculosWindow *ui;
     void cleanRMR();
@@ -71,6 +75,7 @@ private:
     void habilitarAsientoVerticalPB();
     void habilitarVolumenCubeta();
     void habilitarDesplazamientoHorizontal();
+    void habilitarRendimiento();
     void guardadoRendimiento();
     void guardarAsientoVertical();
     void guardarVolumenAsiento();
