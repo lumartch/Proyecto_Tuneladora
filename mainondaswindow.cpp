@@ -136,7 +136,7 @@ void MainOndasWindow::guardarDatosFrente(const QString &alerta)
                 + QString::number(tiempoLocal.month()) + "/" + QString::number(tiempoLocal.year());
         QString horaStr = '[' + QString::number(horaLocal.hour()) + ':'
                 + QString::number(horaLocal.minute()) + ']';
-        //salida << auxStr;
+        salida << auxStr;
         salida << fechaStr + "\n";
         salida << horaStr + "\n";
         salida << ui->interiorLE->text() << "\n";
