@@ -24,6 +24,7 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     habilitarVolumenCubeta();
     habilitarDesplazamientoHorizontal();
     habilitarRendimiento();
+    habilitarOndasP();
     //Integración de validadores, para solo recibir numeros
     QRegExp rx("[+-]?([0-9]*[.])?[0-9]+");
     QValidator *validadorNumeros = new QRegExpValidator(rx);
@@ -35,6 +36,7 @@ MainCalculosWindow::MainCalculosWindow(QWidget *parent) :
     ui->profundidadLE->setValidator(validadorNumeros);
     ui->distanciaHorLE->setValidator(validadorNumeros);
     ui->asientoVerDesLE->setValidator(validadorNumeros);
+    ui->ondasPLE->setValidator(validadorNumeros);
     //Constructor del calculo del rendimiento
     ui->horasRealesLE->setPlaceholderText("m/hr");
     ui->horasEfectivasLE->setPlaceholderText("m/hr");
@@ -199,6 +201,16 @@ void MainCalculosWindow::habilitarRendimiento()
         ui->CuButtonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
     }else{
         ui->CuButtonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+    }
+}
+
+void MainCalculosWindow::habilitarOndasP()
+{
+    //Disable del boton para ondas P
+    if(ui->ondasPLE->text() > 0){
+        ui->piedraBB->button(QDialogButtonBox::Ok)->setEnabled(true);
+    }else{
+        ui->piedraBB->button(QDialogButtonBox::Ok)->setEnabled(false);
     }
 }
 
@@ -898,4 +910,69 @@ void MainCalculosWindow::on_horasEfectivasLE_textChanged(const QString &arg1)
 {
     Q_UNUSED(arg1);
     habilitarRendimiento();
+}
+
+void MainCalculosWindow::on_piedraBB_accepted()
+{
+    int ondasP = ui->ondasPLE->text().toInt();
+    ui->tipoPiedraTE->show();
+    if(ondasP > 4500 and ondasP < 7500){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se está trabajando son Rocas Inglesas");
+    }else if(ondasP > 1400 and ondasP < 1800){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es cieno");
+    }else if(ondasP > 300 and ondasP < 1400){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es (Sedimentos no consolidados)");
+    }else if(ondasP > 1800 and ondasP < 2500){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es (Sedimentos no consolidados)");
+    }else if(ondasP > 1400 and ondasP < 1800){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es cieno ó (Sedimentos no consolidados )");
+    }else if(ondasP > 3000 and ondasP < 3500){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es Limos");
+    }else if(ondasP > 1500 and ondasP < 5400){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es (Arenas compactas)");
+    }else if(ondasP > 3500 and ondasP < 5400){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es Rocas sedimentarias ó (Arenas compactas)");
+    }else if(ondasP > 5400 and ondasP < 5500){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es Rocas sedimentarias");
+    }else if(ondasP > 4500 and ondasP < 6000){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es Rocas metamórficas");
+    }else if(ondasP > 4500 and ondasP < 5500){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es Limos ó Rocas sedimentarias ó Rocas Metamórficas");
+    }else if(ondasP > 3000 and ondasP < 6000){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es Rocas sedimentarias o Limos");
+    }else if(ondasP > 5500 and ondasP < 6000){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es Limos");
+    }else if(ondasP == 1500){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es agua");
+    }else if(ondasP == 5200){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es granito");
+    }else if(ondasP == 6400){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es basalto");
+    }else if(ondasP == 2400){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es calizas");
+    }else if(ondasP == 3500){
+        ui->tipoPiedraTE->setText("Por las Ondas P registradas el material con el que se esta trabajando es Areniscas");
+    }else if(ondasP < 250){
+        ui->tipoPiedraTE->setText("No hay registro de ondas P tan bajas para ningún material");
+    }else if(ondasP > 7500){
+        ui->tipoPiedraTE->setText("No hay registro de ondas P tan altas para ningún material");
+    }else if(ondasP < 50){
+        ui->tipoPiedraTE->setText("No hay registro de ondas S tan bajas para ningún material");
+    }else{
+        ui->tipoPiedraTE->setText("No hay registro de ondas P u ondas S para ningún material con esos parametros");
+    }
+}
+
+void MainCalculosWindow::on_piedraBB_rejected()
+{
+
+    ui->ondasPLE->setText("");
+    ui->tipoPiedraTE->setText("");
+    ui->tipoPiedraTE->hide();
+}
+
+void MainCalculosWindow::on_ondasPLE_textChanged(const QString &arg1)
+{
+    Q_UNUSED(arg1);
+    habilitarOndasP();
 }

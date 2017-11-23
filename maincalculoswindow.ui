@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="asientosPerdidasSeccionTab">
      <attribute name="title">
@@ -49,7 +49,7 @@
         <x>20</x>
         <y>200</y>
         <width>311</width>
-        <height>82</height>
+        <height>103</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="cubetaAsientosLayout">
@@ -108,7 +108,7 @@
         <x>20</x>
         <y>30</y>
         <width>311</width>
-        <height>110</height>
+        <height>138</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="asientoVerticalLayout">
@@ -190,7 +190,7 @@
         <x>20</x>
         <y>360</y>
         <width>311</width>
-        <height>111</height>
+        <height>138</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="desplazamientoLayout">
@@ -316,7 +316,7 @@
         <x>120</x>
         <y>110</y>
         <width>86</width>
-        <height>71</height>
+        <height>77</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="condicionGrid">
@@ -519,7 +519,7 @@
         <x>220</x>
         <y>90</y>
         <width>251</width>
-        <height>136</height>
+        <height>151</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="espaciamientoLayout">
@@ -711,7 +711,7 @@
         <x>170</x>
         <y>30</y>
         <width>302</width>
-        <height>52</height>
+        <height>58</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="resistenciaLayout">
@@ -804,8 +804,8 @@
        <rect>
         <x>230</x>
         <y>370</y>
-        <width>239</width>
-        <height>25</height>
+        <width>271</width>
+        <height>38</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_4">
@@ -849,7 +849,7 @@
         <x>20</x>
         <y>20</y>
         <width>461</width>
-        <height>24</height>
+        <height>31</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="horasRealesLayout">
@@ -871,7 +871,7 @@
         <x>20</x>
         <y>60</y>
         <width>461</width>
-        <height>24</height>
+        <height>31</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="horasEfectivasLayout">
@@ -893,7 +893,7 @@
         <x>20</x>
         <y>100</y>
         <width>461</width>
-        <height>24</height>
+        <height>31</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="CULayout">
@@ -971,6 +971,57 @@
       </property>
       <property name="text">
        <string>ExportarArchivo...</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ondasP">
+     <attribute name="title">
+      <string>Ondas P</string>
+     </attribute>
+     <widget class="QTextEdit" name="tipoPiedraTE">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>20</y>
+        <width>221</width>
+        <height>171</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ondasPLE">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>20</y>
+        <width>181</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QDialogButtonBox" name="piedraBB">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>50</y>
+        <width>156</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ondasPL">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>51</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ondas P:</string>
       </property>
      </widget>
     </widget>

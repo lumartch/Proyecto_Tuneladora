@@ -55,18 +55,16 @@ private slots:
     void on_historialPB_clicked();
     void on_discontinuidadCB_currentIndexChanged(int index);
     void on_exportarPB_clicked();
-
     void on_asVerHistorialPB_clicked();
-
     void on_volAsHistorialPB_clicked();
-
     void on_desHorPB_clicked();
-
     void on_historialPB_2_clicked();
-
     void on_horasRealesLE_textChanged(const QString &arg1);
-
     void on_horasEfectivasLE_textChanged(const QString &arg1);
+    void on_piedraBB_accepted();
+    void on_piedraBB_rejected();
+
+    void on_ondasPLE_textChanged(const QString &arg1);
 
 private:
     Ui::MainCalculosWindow *ui;
@@ -76,6 +74,7 @@ private:
     void habilitarVolumenCubeta();
     void habilitarDesplazamientoHorizontal();
     void habilitarRendimiento();
+    void habilitarOndasP();
     void guardadoRendimiento();
     void guardarAsientoVertical();
     void guardarVolumenAsiento();
